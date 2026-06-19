@@ -1,0 +1,55 @@
+{
+  "name": "supabase-hacker-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LiveKit voice agent starter backed by Supabase (Postgres + pgvector + Auth + Edge Functions) — Node or Python agent + Next.js frontend",
+  "scripts": {
+    "setup": "pnpm install:frontend && pnpm install:agent-ts && pnpm install:agent-py && pnpm env:copy",
+    "install:frontend": "pnpm --dir frontend install",
+    "install:agent-ts": "pnpm --dir agent-ts install",
+    "install:agent-py": "uv --directory agent-py sync",
+    "env:copy": "test -f frontend/.env.local || cp frontend/.env.example frontend/.env.local; test -f agent-ts/.env.local || cp agent-ts/.env.example agent-ts/.env.local; test -f agent-py/.env.local || cp agent-py/.env.example agent-py/.env.local; test -f db/.env.local || cp db/.env.example db/.env.local",
+
+    "dev": "echo 'Use pnpm dev:ts or pnpm dev:py to pick a runtime.' && exit 1",
+    "dev:ts": "concurrently -n agent-ts,frontend -c yellow,magenta \"pnpm dev:agent-ts\" \"pnpm dev:frontend\"",
+    "dev:py": "concurrently -n agent-py,frontend -c cyan,magenta \"pnpm dev:agent-py\" \"pnpm dev:frontend\"",
+    "dev:frontend": "pnpm --dir frontend dev",
+    "dev:agent-ts": "pnpm --dir agent-ts dev",
+    "dev:agent-py": "uv --directory agent-py run src/agent.py dev",
+
+    "agent:py:console": "uv --directory agent-py run src/agent.py console",
+    "agent:ts:start": "pnpm --dir agent-ts start",
+    "agent:py:start": "uv --directory agent-py run src/agent.py start",
+    "agent:ts:download-files": "pnpm --dir agent-ts download-files",
+    "agent:py:download-files": "uv --directory agent-py run src/agent.py download-files",
+
+    "db:migrate": "supabase db push",
+    "db:seed": "tsx db/seed.ts",
+    "db:deploy-functions": "supabase functions deploy embed",
+
+    "build": "pnpm --dir frontend build",
+    "start:frontend": "pnpm --dir frontend start",
+
+    "lint": "concurrently -n agent-ts,agent-py,frontend -c yellow,cyan,magenta \"pnpm lint:agent-ts\" \"pnpm lint:agent-py\" \"pnpm lint:frontend\"",
+    "lint:agent-ts": "pnpm --dir agent-ts lint",
+    "lint:agent-py": "uv --directory agent-py run ruff check .",
+    "lint:frontend": "pnpm --dir frontend lint",
+    "format": "pnpm --dir agent-ts format && uv --directory agent-py run ruff format . && pnpm --dir frontend format",
+
+    "test": "pnpm test:agent-ts && pnpm test:agent-py",
+    "test:agent-ts": "pnpm --dir agent-ts test",
+    "test:agent-py": "uv --directory agent-py run pytest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "concurrently": "^9.0.0",
+    "dotenv": "^17.4.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.18.0",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10.0.0"
+  }
+}

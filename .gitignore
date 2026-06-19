@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+agent-py/.venv/
+
+# Build output
+agent-ts/dist/
+frontend/.next/
+frontend/out/
+
+# Caches
+**/__pycache__/
+*.pyc
+agent-py/.ruff_cache/
+agent-py/.pytest_cache/
+
+# Supabase CLI
+supabase/.branches/
+supabase/.temp/
+
+# Local env
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Content files
+video/
+blog/

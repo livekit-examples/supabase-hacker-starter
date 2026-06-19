@@ -1,0 +1,46 @@
+{
+  "name": "supabase-hacker-starter-agent-ts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{ts,js}\" \"tests/**/*.{ts,js}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{ts,js}\" \"tests/**/*.{ts,js}\"",
+    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json,md}\"",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "dev": "pnpm run build && node dist/main.js dev",
+    "download-files": "pnpm run build && node dist/main.js download-files",
+    "start": "node dist/main.js start"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/node": "^22.19.17",
+    "eslint": "^9.39.4",
+    "globals": "^16.5.0",
+    "jiti": "^2.6.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.58.1",
+    "vite": "^7.3.2",
+    "vitest": "^4.1.4"
+  },
+  "dependencies": {
+    "@livekit/agents": "^1.4.5",
+    "@livekit/agents-plugin-livekit": "^1.4.5",
+    "@livekit/agents-plugin-silero": "^1.4.5",
+    "@livekit/plugins-ai-coustics": "^0.2.15",
+    "@supabase/supabase-js": "^2.108.1",
+    "dotenv": "^17.4.1",
+    "zod": "^3.25.76"
+  }
+}
