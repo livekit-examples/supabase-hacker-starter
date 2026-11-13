@@ -199,7 +199,7 @@ The LiveKit values are required for the voice agent functionality. The Supabase 
 ### Authentication & identity flow
 
 1. On load, the browser Supabase client ([`lib/supabase/client.ts`](./lib/supabase/client.ts)) checks for a session and, if there is none, calls `supabase.auth.signInAnonymously()` (see [`hooks/useSupabaseSession.ts`](./hooks/useSupabaseSession.ts)).
-2. [`middleware.ts`](./middleware.ts) refreshes the auth cookie on every request using the standard `@supabase/ssr` pattern.
+2. [`proxy.ts`](./proxy.ts) (Next.js proxy, formerly middleware) refreshes the auth cookie on every request using the standard `@supabase/ssr` pattern.
 3. When a call starts, [`app/api/token/route.ts`](./app/api/token/route.ts) creates a server Supabase client from the request cookies, calls `supabase.auth.getUser()`, and uses the verified `user.id` as the identity. It packs `{ user_id }` into the agent dispatch metadata so the agent can scope the visitor's data.
 
 Upgrading an anonymous visitor to a permanent account (email, OAuth, etc.) is a natural next step via `supabase.auth.updateUser()` / `linkIdentity()`.
