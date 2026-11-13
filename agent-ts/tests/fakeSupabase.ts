@@ -116,7 +116,7 @@ class QueryBuilder {
   }
 
   private async run(shape: 'many' | 'maybeSingle' | 'single'): Promise<Result> {
-    let data: unknown = null;
+    let data: unknown;
 
     if (this.op === 'upsert' || this.op === 'insert') {
       const incoming = Array.isArray(this.payload) ? this.payload : [this.payload!];
