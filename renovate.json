@@ -2,5 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>livekit-examples/renovate-config"
+  ],
+  "packageRules": [
+    {
+      "description": "Hold Python below 3.15 until livekit-agents dependencies (e.g. livekit-blingfire) ship 3.15 wheels",
+      "matchDepNames": ["python"],
+      "allowedVersions": "<3.15"
+    }
   ]
 }
