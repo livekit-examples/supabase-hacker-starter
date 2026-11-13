@@ -15,8 +15,8 @@ importers:
         specifier: ^10.0.0
         version: 10.0.7
       dotenv:
-        specifier: ^17.4.1
-        version: 17.4.2
+        specifier: ^18.0.0
+        version: 18.0.10
       tsx:
         specifier: ^4.21.0
         version: 4.22.4
@@ -206,9 +206,10 @@ packages:
     engines: {node: '>=22'}
     hasBin: true
 
-  dotenv@17.4.2:
-    resolution: {integrity: sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw==}
+  dotenv@18.0.10:
+    resolution: {integrity: sha512-89FAA1xchzK2mxVWdr5F/0rldwiueXs6zJM86rO66EzekR1iBdiXRthyG+m5GvkJaFH3C2LESzamTkgndmLT2A==}
     engines: {node: '>=12'}
+    hasBin: true
 
   emoji-regex@10.6.0:
     resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
@@ -395,7 +396,7 @@ snapshots:
       tree-kill: 1.2.2
       yargs: 18.0.0
 
-  dotenv@17.4.2: {}
+  dotenv@18.0.10: {}
 
   emoji-regex@10.6.0: {}
 
