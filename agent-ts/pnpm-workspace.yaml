@@ -5,6 +5,4 @@ allowBuilds:
   '@livekit/blingfire': false
   '@livekit/local-inference': false
   esbuild: false
-  onnxruntime-node: false
-  protobufjs: false
   sharp: false

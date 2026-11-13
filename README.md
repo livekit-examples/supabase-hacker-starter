@@ -92,7 +92,7 @@ pnpm db:migrate                  # apply SQL migrations: schema, RLS, RPC, trigg
 pnpm db:deploy-functions         # deploy the gte-small `embed` Edge Function
 pnpm db:seed                     # insert sample knowledge, orders, and a demo user
 
-pnpm agent:ts:download-files     # Node:   fetches VAD + turn detector models once
+pnpm agent:ts:download-files     # Node:   pre-fetches any plugin model files once
 pnpm agent:py:download-files     # Python: same, for the Python agent (skip if Node-only)
 ```
 
@@ -163,8 +163,8 @@ pnpm test:agent-py      # pytest only
 | `pnpm agent:py:console`         | Python terminal console; speak to the agent in your terminal (Python only)            |
 | `pnpm agent:ts:start`           | Node agent in production mode                                                         |
 | `pnpm agent:py:start`           | Python agent in production mode                                                       |
-| `pnpm agent:ts:download-files`  | One-time VAD + turn detector model download (Node)                                    |
-| `pnpm agent:py:download-files`  | One-time VAD + turn detector model download (Python)                                  |
+| `pnpm agent:ts:download-files`  | One-time plugin model file download (Node)                                            |
+| `pnpm agent:py:download-files`  | One-time plugin model file download (Python)                                          |
 | `pnpm db:migrate`               | Applies SQL migrations to your Supabase project via `supabase db push`                |
 | `pnpm db:seed`                  | Inserts sample knowledge, orders, and a demo user (`db/seed.ts`, data in `db/data.ts`)|
 | `pnpm db:deploy-functions`      | Deploys the `gte-small` `embed` Edge Function via `supabase functions deploy embed`   |

@@ -21,7 +21,7 @@
     "agent:ts:start": "pnpm --dir agent-ts start",
     "agent:py:start": "uv --directory agent-py run src/agent.py start",
     "agent:ts:download-files": "pnpm --dir agent-ts download-files",
-    "agent:py:download-files": "uv --directory agent-py run src/agent.py download-files",
+    "agent:py:download-files": "uv --directory agent-py run -m livekit.agents download-files",
 
     "db:migrate": "supabase db push",
     "db:seed": "tsx db/seed.ts",
