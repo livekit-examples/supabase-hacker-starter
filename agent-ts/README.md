@@ -61,12 +61,12 @@ You can populate `LIVEKIT_*` with `lk app env -w -d .env.local` if you've authen
 
 ### Environment variables
 
-| Variable                                               | Purpose                                                                                                     |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` | LiveKit Cloud credentials                                                                                   |
-| `SUPABASE_URL`                                         | Your Supabase project URL                                                                                   |
+| Variable                                               | Purpose                                                                                                                                                                                           |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` | LiveKit Cloud credentials                                                                                                                                                                         |
+| `SUPABASE_URL`                                         | Your Supabase project URL                                                                                                                                                                         |
 | `SUPABASE_SECRET_KEY`                                  | Supabase secret key (`sb_secret_...`), server-only — the agent runs server-side and bypasses RLS. The browser/frontend uses the publishable key (`sb_publishable_...`) and is constrained by RLS. |
-| `DEMO_USER_ID`                                         | UUID of the seeded demo user, used as the fallback when there is no dispatch metadata (e.g. local dev runs) |
+| `DEMO_USER_ID`                                         | UUID of the seeded demo user, used as the fallback when there is no dispatch metadata (e.g. local dev runs)                                                                                       |
 
 ## Initialize Supabase
 

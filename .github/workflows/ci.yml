@@ -1,0 +1,105 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: frontend/package.json
+          cache: true
+          cache_dependency_path: frontend/pnpm-lock.yaml
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: agent-ts/.nvmrc
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm format:check
+      - run: pnpm build
+
+  agent-ts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: package.json
+          cache: true
+          cache_dependency_path: |
+            agent-ts/pnpm-lock.yaml
+            db/pnpm-lock.yaml
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: agent-ts/.nvmrc
+      - name: Install
+        working-directory: agent-ts
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        working-directory: agent-ts
+        run: pnpm lint
+      - name: Typecheck
+        working-directory: agent-ts
+        run: pnpm typecheck
+      - name: Format check
+        working-directory: agent-ts
+        run: pnpm format:check
+      - name: Test
+        working-directory: agent-ts
+        run: pnpm test
+      - name: Build
+        working-directory: agent-ts
+        run: pnpm build
+      - name: Typecheck db seed
+        working-directory: db
+        run: pnpm install --frozen-lockfile && pnpm typecheck
+
+  agent-py:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: agent-py
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+          cache-dependency-glob: agent-py/uv.lock
+      - run: uv sync --locked
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest
+
+  edge-function:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: denoland/setup-deno@v2
+      - run: deno check supabase/functions/embed/index.ts
+
+  docker:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        agent: [agent-ts, agent-py]
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build ${{ matrix.agent }} image
+        run: docker build -t ${{ matrix.agent }}:ci ${{ matrix.agent }}

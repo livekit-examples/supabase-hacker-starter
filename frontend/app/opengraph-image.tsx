@@ -29,8 +29,14 @@ function isRemoteFile(uri: string) {
   return uri.startsWith('http');
 }
 
+// Resolve local files under a static 'public' prefix so Next's output file
+// tracing only includes the public folder instead of the whole project.
+function localFilePath(uri: string) {
+  return join(process.cwd(), 'public', uri.replace(/^\/?(public\/)?/, ''));
+}
+
 function doesLocalFileExist(uri: string) {
-  return existsSync(join(process.cwd(), uri));
+  return existsSync(localFilePath(uri));
 }
 
 // LOCAL FILES MUST BE IN PUBLIC FOLDER
@@ -45,7 +51,7 @@ async function loadFileData(filePath: string): Promise<ArrayBuffer> {
 
   // Try file system first (works in local development)
   if (doesLocalFileExist(filePath)) {
-    const buffer = await readFile(join(process.cwd(), filePath));
+    const buffer = await readFile(localFilePath(filePath));
     return buffer.buffer.slice(
       buffer.byteOffset,
       buffer.byteOffset + buffer.byteLength
