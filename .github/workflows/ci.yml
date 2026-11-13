@@ -77,7 +77,7 @@ jobs:
         working-directory: agent-py
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.3.3 # no floating v10 tag is published
         with:
           enable-cache: true
           cache-dependency-glob: agent-py/uv.lock
