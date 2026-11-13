@@ -10,7 +10,7 @@ A voice AI agent built on the [LiveKit Agents Python starter](https://github.com
 4. **Session report persistence** — write the structured `SessionReport` to the `sessions` table (service role) inside `on_session_end`.
 5. **Agentic memory tools** — `remember_detail`, `recall_detail`, `forget_detail`, `search_memories`, and `list_user_memories` tools backed by a per-user memory store. Memory is modeled as slots (one value per `(user_id, memory_type)` via a UNIQUE upsert), and retrieval uses the `match_memories_hybrid` function — Reciprocal Rank Fusion over a pgvector branch and a `tsvector` full-text branch.
 
-The voice pipeline uses [LiveKit Inference](https://docs.livekit.io/agents/models/inference/) (Deepgram Nova-3 STT, GPT-5.3 LLM, Cartesia Sonic-3 TTS), the [LiveKit Turn Detector](https://docs.livekit.io/agents/logic/turns/turn-detector/), Silero VAD, and ai-coustics noise cancellation. Embeddings are produced by the shared `embed` Supabase Edge Function (`gte-small`, 384 dimensions). That function is deployed `verify_jwt=false` and authorizes the `apikey` header, so the agent sends `SUPABASE_SECRET_KEY` on the `apikey` header (a `Bearer` header is sent too for compatibility).
+The voice pipeline uses [LiveKit Inference](https://docs.livekit.io/agents/models/inference/) (Deepgram Nova-3 STT, GPT-5.3 LLM, Cartesia Sonic-3 TTS), the LiveKit [audio turn detector](https://docs.livekit.io/agents/logic/turns/turn-detector/) (built into the SDK; `AgentSession` supplies its VAD), and ai-coustics noise cancellation. Embeddings are produced by the shared `embed` Supabase Edge Function (`gte-small`, 384 dimensions). That function is deployed `verify_jwt=false` and authorizes the `apikey` header, so the agent sends `SUPABASE_SECRET_KEY` on the `apikey` header (a `Bearer` header is sent too for compatibility).
 
 ## What's in this directory
 
@@ -51,7 +51,7 @@ cd agent-py
 uv sync
 cp .env.example .env.local
 # fill in LIVEKIT_*, SUPABASE_URL, SUPABASE_SECRET_KEY, DEMO_USER_ID
-uv run src/agent.py download-files   # one-time: VAD + turn detector models
+uv run -m livekit.agents download-files   # one-time: plugin model files
 ```
 
 You can populate `LIVEKIT_*` with `lk app env -w -d .env.local` if you've authenticated with `lk cloud auth`.

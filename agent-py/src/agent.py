@@ -22,7 +22,6 @@ from livekit.agents import (
     AgentSession,
     ChatContext,
     JobContext,
-    JobProcess,
     RunContext,
     ToolError,
     TurnHandlingOptions,
@@ -31,8 +30,7 @@ from livekit.agents import (
     inference,
     room_io,
 )
-from livekit.plugins import ai_coustics, silero
-from livekit.plugins.turn_detector.multilingual import MultilingualModel
+from livekit.plugins import ai_coustics
 from supabase import AsyncClient
 
 from db.client import aclose, get_client
@@ -350,13 +348,6 @@ async def on_session_end(ctx: JobContext) -> None:
 server = AgentServer()
 
 
-def prewarm(proc: JobProcess) -> None:
-    proc.userdata["vad"] = silero.VAD.load()
-
-
-server.setup_fnc = prewarm
-
-
 @server.rtc_session(agent_name="my-agent", on_session_end=on_session_end)
 async def my_agent(ctx: JobContext) -> None:
     ctx.log_context_fields = {"room": ctx.room.name}
@@ -385,9 +376,12 @@ async def my_agent(ctx: JobContext) -> None:
         tts=inference.TTS(
             model="cartesia/sonic-3", voice="9626c31c-bec5-4cca-baa8-f8ba9e84c8bc"
         ),
-        vad=ctx.proc.userdata["vad"],
         turn_handling=TurnHandlingOptions(
-            turn_detection=MultilingualModel(),
+            # LiveKit's audio turn detector: predicts end of turn from the user's
+            # audio (semantics plus intonation and pacing). AgentSession supplies
+            # the VAD it needs automatically.
+            # See https://docs.livekit.io/agents/logic/turns/turn-detector/
+            turn_detection=inference.TurnDetector(),
             preemptive_generation={"enabled": True},
         ),
     )

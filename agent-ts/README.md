@@ -8,7 +8,7 @@ A voice AI agent built on the [LiveKit Agents Node.js starter](https://github.co
 4. **Function-tool CRUD** — `lookup_order` reads the shared `orders` table by `order_id`.
 5. **Session report persistence** — write the structured `SessionReport` to the `sessions` table inside `addShutdownCallback`, using the secret key.
 
-The voice pipeline uses [LiveKit Inference](https://docs.livekit.io/agents/models/inference/) (Deepgram Nova-3 STT, GPT-5.3 LLM, Cartesia Sonic-3 TTS), the [LiveKit Turn Detector](https://docs.livekit.io/agents/logic/turns/turn-detector/), Silero VAD, and ai-coustics noise cancellation. Embeddings come from a shared Supabase [Edge Function](https://supabase.com/docs/guides/functions) (`embed`) running the `gte-small` model (384 dimensions).
+The voice pipeline uses [LiveKit Inference](https://docs.livekit.io/agents/models/inference/) (Deepgram Nova-3 STT, GPT-5.3 LLM, Cartesia Sonic-3 TTS), the LiveKit [audio turn detector](https://docs.livekit.io/agents/logic/turns/turn-detector/) (built into the SDK; `AgentSession` supplies its VAD), and ai-coustics noise cancellation. Embeddings come from a shared Supabase [Edge Function](https://supabase.com/docs/guides/functions) (`embed`) running the `gte-small` model (384 dimensions).
 
 > This Node.js (TypeScript) agent is the **primary** runtime for this starter. A Python sibling lives at [`../agent-py`](../agent-py) and registers under the same agent name.
 
@@ -17,7 +17,7 @@ The voice pipeline uses [LiveKit Inference](https://docs.livekit.io/agents/model
 ```
 agent-ts/
 ├── src/
-│   ├── main.ts            # defineAgent + prewarm + entry + cli.runApp
+│   ├── main.ts            # defineAgent + entry + cli.runApp
 │   ├── agent.ts           # VoiceAgent class + 8 tools
 │   ├── preload.ts         # Pattern 3: profile + memory pre-load
 │   ├── db/
@@ -54,7 +54,7 @@ cd agent-ts
 pnpm install
 cp .env.example .env.local
 # fill in LIVEKIT_*, SUPABASE_URL, SUPABASE_SECRET_KEY, DEMO_USER_ID in .env.local
-pnpm download-files   # one-time: VAD + turn detector models
+pnpm download-files   # one-time: plugin model files
 ```
 
 You can populate `LIVEKIT_*` with `lk app env -w -d .env.local` if you've authenticated with `lk cloud auth`.

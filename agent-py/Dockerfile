@@ -39,15 +39,18 @@ RUN mkdir -p src
 # Ensure your uv.lock file is checked in for consistency across environments
 RUN uv sync --locked
 
+# Pre-download any ML models or files the agent's plugins need, so the container
+# is ready to run without downloading them at startup. This runs before COPY . .
+# so the layer is cached across code-only changes; the module-level command
+# discovers installed livekit-plugins-* packages without loading the agent code.
+# (The audio turn detector's weights ship inside the livekit-agents
+# dependencies, so there is nothing extra to fetch for them.)
+RUN uv run --module livekit.agents download-files
+
 # Copy all remaining application files into the container
 # This includes source code, configuration files, and dependency specifications
 # (Excludes files specified in .dockerignore)
 COPY . .
-
-# Pre-download any ML models or files the agent needs
-# This ensures the container is ready to run immediately without downloading
-# dependencies at runtime, which improves startup time and reliability
-RUN uv run "src/agent.py" download-files
 
 # --- Production stage ---
 # Build tools (gcc, g++, python3-dev) are not included in the final image

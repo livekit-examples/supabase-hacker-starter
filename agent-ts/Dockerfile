@@ -9,11 +9,6 @@ FROM node:${NODE_VERSION}-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
-# Pin the HuggingFace hub cache (used by @livekit/agents-plugin-livekit's turn
-# detector) inside /app so models downloaded in the build stage are picked up
-# by the production stage's appuser, whose home directory is also /app.
-ENV HF_HUB_CACHE="/app/.cache/huggingface/hub"
-
 # Install required system packages and pnpm, then clean up the apt cache for a smaller image
 # ca-certificates: enables TLS/SSL for securely fetching dependencies and calling HTTPS services
 # --no-install-recommends keeps the image minimal
@@ -37,6 +32,14 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 # --frozen-lockfile ensures we use exact versions from pnpm-lock.yaml for reproducible builds
 RUN pnpm install --frozen-lockfile
 
+# Pre-download any ML models or files the agent's plugins need, so the container
+# is ready to run without downloading them at startup. This runs before COPY . .
+# so the layer is cached across code-only changes; the standalone CLI discovers
+# installed @livekit/agents-plugin-* packages without loading the agent code.
+# (The audio turn detector's weights ship inside @livekit/agents'
+# @livekit/local-inference dependency, so there is nothing extra to fetch.)
+RUN pnpm exec livekit-agents download-files
+
 # Copy all remaining application files into the container
 # This includes source code, configuration files, and dependency specifications
 # (Excludes files specified in .dockerignore)
@@ -45,12 +48,6 @@ COPY . .
 # Build the project
 # Your package.json must contain a "build" script, such as `"build": "tsc"`
 RUN pnpm build
-
-# Pre-download any ML models or files the agent needs
-# This ensures the container is ready to run immediately without downloading
-# dependencies at runtime, which improves startup time and reliability
-# Your package.json must contain a "download-files" script, such as `"download-files": "pnpm run build && node dist/agent.js download-files"`
-RUN pnpm download-files
 
 # Remove dev dependencies for a leaner production image
 RUN pnpm prune --prod
