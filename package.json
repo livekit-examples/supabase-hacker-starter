@@ -45,7 +45,7 @@
     "concurrently": "^10.0.0",
     "dotenv": "^17.4.1",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "packageManager": "pnpm@10.34.9",
   "engines": {
