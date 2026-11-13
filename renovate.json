@@ -3,6 +3,7 @@
   "extends": [
     "local>livekit-examples/renovate-config"
   ],
+  "minimumReleaseAge": "1 day",
   "packageRules": [
     {
       "description": "Hold Python below 3.15 until livekit-agents dependencies (e.g. livekit-blingfire) ship 3.15 wheels",

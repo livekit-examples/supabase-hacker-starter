@@ -1,0 +1,4 @@
+# pnpm 11+ fails installs on unreviewed dependency build scripts (strictDepBuilds).
+# esbuild (via tsx) ships prebuilt platform binaries, so its install script is not needed.
+allowBuilds:
+  esbuild: false
