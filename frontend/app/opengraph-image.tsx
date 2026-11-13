@@ -145,90 +145,88 @@ export default async function Image() {
   const logoSize = scaleImageSize(logoDimensions, 24);
 
   return new ImageResponse(
-    (
-      // ImageResponse JSX element
+    // ImageResponse JSX element
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size.width,
+        height: size.height,
+        backgroundImage: `url(${bgSrcBase64})`,
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* wordmark */}
       <div
         style={{
+          position: 'absolute',
+          top: 30,
+          left: 30,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          width: size.width,
-          height: size.height,
-          backgroundImage: `url(${bgSrcBase64})`,
-          backgroundSize: '100% 100%',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
+          gap: 10,
         }}
       >
-        {/* wordmark */}
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
+        <img src={wordmarkSrcBase64} width={wordmarkSize.width} height={wordmarkSize.height} />
+      </div>
+      {/* logo */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 200,
+          left: 460,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+        }}
+      >
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
+        <img src={logoSrcBase64} width={logoSize.width} height={logoSize.height} />
+      </div>
+      {/* title */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 100,
+          left: 30,
+          width: '380px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}
+      >
         <div
           style={{
-            position: 'absolute',
-            top: 30,
-            left: 30,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10,
+            backgroundColor: '#1F1F1F',
+            padding: '2px 8px',
+            borderRadius: 4,
+            width: 72,
+            fontSize: 12,
+            fontFamily: 'CommitMono',
+            fontWeight: 600,
+            color: '#999999',
+            letterSpacing: 0.8,
           }}
         >
-          {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <img src={wordmarkSrcBase64} width={wordmarkSize.width} height={wordmarkSize.height} />
+          SANDBOX
         </div>
-        {/* logo */}
         <div
           style={{
-            position: 'absolute',
-            top: 200,
-            left: 460,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10,
+            fontSize: 48,
+            fontWeight: 300,
+            fontFamily: 'Everett',
+            color: 'white',
+            lineHeight: 1,
           }}
         >
-          {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <img src={logoSrcBase64} width={logoSize.width} height={logoSize.height} />
-        </div>
-        {/* title */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 100,
-            left: 30,
-            width: '380px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 16,
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: '#1F1F1F',
-              padding: '2px 8px',
-              borderRadius: 4,
-              width: 72,
-              fontSize: 12,
-              fontFamily: 'CommitMono',
-              fontWeight: 600,
-              color: '#999999',
-              letterSpacing: 0.8,
-            }}
-          >
-            SANDBOX
-          </div>
-          <div
-            style={{
-              fontSize: 48,
-              fontWeight: 300,
-              fontFamily: 'Everett',
-              color: 'white',
-              lineHeight: 1,
-            }}
-          >
-            {pageTitle}
-          </div>
+          {pageTitle}
         </div>
       </div>
-    ),
+    </div>,
     // ImageResponse options
     {
       // For convenience, we can re-use the exported opengraph-image
