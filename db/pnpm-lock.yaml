@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@supabase/supabase-js':
-        specifier: ^2.45.0
+        specifier: ^2.119.0
         version: 2.119.0
       dotenv:
         specifier: ^18.0.10
@@ -19,7 +19,7 @@ importers:
         specifier: ^26.6.6
         version: 26.6.6
       tsx:
-        specifier: ^4.19.0
+        specifier: ^4.23.15
         version: 4.23.15
       typescript:
         specifier: ^6.0.3
