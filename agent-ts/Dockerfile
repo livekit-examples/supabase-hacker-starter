@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 
-# Use the official Node.js v22 base image
+# Use the official Node.js v26 base image
 # We use the slim variant to keep the image size smaller while still having essential tools
-ARG NODE_VERSION=22
+ARG NODE_VERSION=26
 FROM node:${NODE_VERSION}-slim AS base
 
 # Configure pnpm installation directory and ensure it is on PATH
