@@ -134,10 +134,10 @@ Python additionally offers a **terminal console** — `pnpm agent:py:console` ru
 pnpm build              # production build of the Next.js frontend
 pnpm start:frontend     # run the built frontend
 
-pnpm lint               # eslint (agent-ts) + ruff (agent-py) + next lint (frontend), in parallel
+pnpm lint               # eslint (agent-ts) + ruff (agent-py) + eslint (frontend), in parallel
 pnpm lint:agent-ts      # eslint only
 pnpm lint:agent-py      # ruff check only
-pnpm lint:frontend      # next lint only
+pnpm lint:frontend      # eslint (frontend) only
 pnpm format             # prettier (agent-ts) + ruff format (agent-py) + prettier (frontend)
 
 pnpm test               # runs both vitest (agent-ts) and pytest (agent-py), sequentially
@@ -202,7 +202,7 @@ This starter uses **Supabase Auth anonymous sign-ins** for zero-friction identit
 
 How identity flows from the browser to the agent:
 
-1. **Frontend** uses the `@supabase/ssr` browser client. On load, if there is no session it calls `supabase.auth.signInAnonymously()`. Next.js middleware refreshes the auth cookie on every request.
+1. **Frontend** uses the `@supabase/ssr` browser client. On load, if there is no session it calls `supabase.auth.signInAnonymously()`. The Next.js proxy (`frontend/proxy.ts`) refreshes the auth cookie on every request.
 2. **Token route** ([`app/api/token/route.ts`](./frontend/app/api/token/route.ts)) builds a server client with `createServerClient(publishable key + cookies)` and calls `supabase.auth.getUser()` to verify the session **server-side**. The verified `user.id` (which equals `auth.uid()`) is packed into `RoomConfiguration` as `agents: [new RoomAgentDispatch({ agentName, metadata })]`, where `metadata` is the JSON-stringified `{ user_id }`. The server is the sole authority for identity; any `room_config` sent by the client is ignored.
 3. **Agent** parses `ctx.job.metadata` to recover `user_id`, then builds a Supabase client with the **secret key**. Because the secret key bypasses RLS, the agent must — and does — scope every memory, profile, and session query by that verified `user_id`. In console mode there is no metadata, so the agent falls back to `DEMO_USER_ID`.
 
