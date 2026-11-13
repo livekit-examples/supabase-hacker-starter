@@ -173,7 +173,7 @@ export class VoiceAgent extends voice.Agent {
           query: z.string().describe('Natural-language question to search the knowledge base for.'),
         }),
         execute: async ({ query }, { ctx }) => {
-          let statusTimer: ReturnType<typeof setTimeout> | undefined = setTimeout(() => {
+          const statusTimer = setTimeout(() => {
             ctx.session.generateReply({
               instructions:
                 `You are searching the knowledge base for '${query}' ` +
@@ -186,10 +186,7 @@ export class VoiceAgent extends voice.Agent {
             const results = await vectorSearchKnowledge(supabase, query, 3);
             return JSON.stringify({ results });
           } finally {
-            if (statusTimer) {
-              clearTimeout(statusTimer);
-              statusTimer = undefined;
-            }
+            clearTimeout(statusTimer);
           }
         },
       }),
