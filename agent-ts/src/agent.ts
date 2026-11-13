@@ -9,9 +9,9 @@
 import { llm, voice } from '@livekit/agents';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { z } from 'zod';
-import { getSupabase } from './db/client';
-import { embedText } from './tools/embeddings';
-import { forget, listMemories, recall, remember, searchMemory } from './tools/memory';
+import { getSupabase } from './db/client.ts';
+import { embedText } from './tools/embeddings.ts';
+import { forget, listMemories, recall, remember, searchMemory } from './tools/memory.ts';
 
 // Allow-list for identity fields that `update_profile` can write to the
 // `profiles` row. `name` and `email` are first-class columns; the rest are

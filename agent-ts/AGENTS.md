@@ -52,4 +52,6 @@ The Node.js SDK for LiveKit Agents has most, but not all, of the same features a
 
 ## LiveKit CLI
 
+Run the agent locally with the LiveKit CLI (version 2.19 or later): `lk agent console` to talk to it in the terminal, and `lk agent dev --deployment local-dev` to serve the frontend. The frontend's token route dispatches to the `local-dev` deployment by default (`AGENT_DEPLOYMENT` in `../frontend/.env.local`); without `--deployment`, `lk agent dev` registers under a random `dev-…` deployment the frontend can't reach. Running the agent script's own `dev`/`console` commands is deprecated.
+
 Beyond documentation access, the LiveKit CLI (`lk`) supports other tasks such as managing SIP trunks for telephony-based agents. Run `lk --help` to explore available commands.

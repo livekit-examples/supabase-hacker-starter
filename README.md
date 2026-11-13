@@ -61,6 +61,7 @@ The root `package.json` is a thin script runner backed by [`concurrently`](https
 - Node.js 22+ and [pnpm](https://pnpm.io/) 10+ (Corepack auto-manages the pinned version when enabled)
 - A [Supabase](https://supabase.com) project (the `gte-small` Edge Function and pgvector are available on the free tier) plus the [Supabase CLI](https://supabase.com/docs/guides/cli) for migrations and function deploys
 - A [LiveKit Cloud](https://cloud.livekit.io) project
+- The [LiveKit CLI](https://docs.livekit.io/reference/developer-tools/livekit-cli/) 2.19 or later (`lk`): the dev and console scripts run the agents with `lk agent dev` / `lk agent console`
 - Python 3.11+ and [uv](https://docs.astral.sh/uv/) (only required if you run the Python agent)
 
 No third-party embeddings provider is needed — embeddings are generated inside Supabase by the `embed` Edge Function.
@@ -71,7 +72,7 @@ The starter ships with two equivalent agent implementations and you can build wi
 
 | Command          | Agent package | Runtime              | Use when                                                                  |
 | ---------------- | ------------- | -------------------- | ------------------------------------------------------------------------- |
-| `pnpm dev:ts`    | `agent-ts/`   | Node 22+ via pnpm    | You prefer TypeScript (the primary runtime) or deploy alongside Node      |
+| `pnpm dev:ts`    | `agent-ts/`   | Node 24+ via pnpm    | You prefer TypeScript (the primary runtime) or deploy alongside Node      |
 | `pnpm dev:py`    | `agent-py/`   | Python 3.11+ via uv  | You prefer Python or want full feature parity in Python                   |
 
 > **Only run one runtime at a time.** Both register under the same `AGENT_NAME` (`my-agent` by default), so the LiveKit dispatch routes to whichever connects first. To run them side-by-side for comparison, change the agent name in one of them and the matching `AGENT_NAME` in `frontend/.env.local`.
@@ -110,7 +111,8 @@ pnpm dev:py             # Python agent (dev mode) + frontend together
 pnpm dev:frontend       # just the Next.js app
 pnpm dev:agent-ts       # just the Node agent in dev mode
 pnpm dev:agent-py       # just the Python agent in dev mode
-pnpm agent:py:console   # speak to the Python agent in your terminal (Python only)
+pnpm agent:py:console   # speak to the Python agent in your terminal (lk agent console)
+pnpm agent:ts:console   # same, for the Node agent
 pnpm agent:ts:start     # Node   agent in production mode
 pnpm agent:py:start     # Python agent in production mode
 ```
@@ -122,11 +124,11 @@ pnpm agent:py:start     # Python agent in production mode
 The primary way to test either runtime is the **hosted Agent Console** in the [LiveKit Cloud Agents dashboard](https://cloud.livekit.io) — a browser-based console that talks to your **locally running** agent, no custom frontend required. It works for both the Node and Python agents (Node SDK ≥ 1.2.4, Python SDK ≥ 1.5.2):
 
 1. Start an agent locally with `pnpm dev:ts` (Node) or `pnpm dev:py` (Python).
-2. In the LiveKit Cloud dashboard, open **Agents → Launch Console**, set the **Agent name** to `my-agent`, and start talking.
+2. In the LiveKit Cloud dashboard, open **Agents → Launch Console**, set the **Agent name** to `my-agent` and the deployment to `local-dev` (the dev scripts run `lk agent dev --deployment local-dev`, which also prints a console link for it), and start talking.
 
 Because there is no frontend in this flow, the agent has no dispatch metadata and falls back to `DEMO_USER_ID` for the preload path.
 
-Python additionally offers a **terminal console** — `pnpm agent:py:console` runs the agent fully in your terminal with no browser. (The Node agent has no terminal console; use the hosted Agent Console above.)
+Both agents also offer a **terminal console** — `pnpm agent:py:console` / `pnpm agent:ts:console` (`lk agent console`) runs the agent in your terminal with no browser.
 
 ## Build, lint, test
 
@@ -158,11 +160,12 @@ pnpm test:agent-py      # pytest only
 | `pnpm dev:ts`                   | Node agent (dev) + frontend together with labeled logs                                |
 | `pnpm dev:py`                   | Python agent (dev) + frontend together with labeled logs                              |
 | `pnpm dev:frontend`             | `pnpm dev` inside `frontend/`                                                         |
-| `pnpm dev:agent-ts`             | `pnpm dev` inside `agent-ts/`                                                         |
-| `pnpm dev:agent-py`             | `uv run src/agent.py dev` inside `agent-py/`                                          |
-| `pnpm agent:py:console`         | Python terminal console; speak to the agent in your terminal (Python only)            |
-| `pnpm agent:ts:start`           | Node agent in production mode                                                         |
-| `pnpm agent:py:start`           | Python agent in production mode                                                       |
+| `pnpm dev:agent-ts`             | `pnpm dev` inside `agent-ts/` (`lk agent dev --deployment local-dev`)                 |
+| `pnpm dev:agent-py`             | `lk agent dev --deployment local-dev` inside `agent-py/`                              |
+| `pnpm agent:py:console`         | `lk agent console`: speak to the Python agent in your terminal                        |
+| `pnpm agent:ts:console`         | `lk agent console`: speak to the Node agent in your terminal                          |
+| `pnpm agent:ts:start`           | Node agent in production mode (`node src/main.ts start`)                              |
+| `pnpm agent:py:start`           | Python agent in production mode (`python -m livekit.agents start src/agent.py`)       |
 | `pnpm agent:ts:download-files`  | One-time plugin model file download (Node)                                            |
 | `pnpm agent:py:download-files`  | One-time plugin model file download (Python)                                          |
 | `pnpm db:migrate`               | Applies SQL migrations to your Supabase project via `supabase db push`                |
@@ -180,7 +183,7 @@ Four `.env.local` files. `pnpm env:copy` (run by `pnpm setup`) seeds them from t
 
 - [`agent-ts/.env.example`](./agent-ts/.env.example) — `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `DEMO_USER_ID`.
 - [`agent-py/.env.example`](./agent-py/.env.example) — the same set as `agent-ts/.env.example`.
-- [`frontend/.env.example`](./frontend/.env.example) — `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `AGENT_NAME`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+- [`frontend/.env.example`](./frontend/.env.example) — `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `AGENT_NAME`, `AGENT_DEPLOYMENT`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
 - [`db/.env.example`](./db/.env.example) — `SUPABASE_URL`, `SUPABASE_SECRET_KEY` (used by the seed script).
 
 This starter uses Supabase's **modern API keys** — the legacy `anon` / `service_role` JWT keys are deprecated. Find both under **Project Settings → API Keys** (the **Publishable** and **Secret** tabs).
@@ -195,6 +198,8 @@ Key points:
 ## Agent dispatch
 
 The frontend dispatches to the agent registered as `my-agent`. Both [`agent-ts/src/main.ts`](./agent-ts/src/main.ts) and [`agent-py/src/agent.py`](./agent-py/src/agent.py) register under that name, so only the runtime you started with `pnpm dev:ts` or `pnpm dev:py` will pick up jobs. To change the dispatch target, update the agent name in code along with `AGENT_NAME` in `frontend/.env.local`. Leaving `AGENT_NAME` blank enables automatic dispatch instead of named dispatch.
+
+`lk agent dev` registers the agent under a [deployment](https://docs.livekit.io/deploy/agents/deployments/) so a local worker never takes jobs meant for production; left to itself it picks a random `dev-…` name, which a token minted by the frontend couldn't target. The dev scripts pin it to `local-dev` (`lk agent dev --deployment local-dev`), and the frontend token route puts the same name on its agent dispatch (`AGENT_DEPLOYMENT`, default `local-dev`). If you run the agent another way (`pnpm agent:*:start`, the Docker image, or LiveKit Cloud), it registers as production: set `AGENT_DEPLOYMENT=` (empty) in `frontend/.env.local`.
 
 ## Who is the user? — anonymous auth + RLS
 

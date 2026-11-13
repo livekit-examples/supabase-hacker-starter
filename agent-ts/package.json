@@ -4,8 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"src/**/*.{ts,js}\" \"tests/**/*.{ts,js}\"",
     "lint:fix": "eslint --fix \"src/**/*.{ts,js}\" \"tests/**/*.{ts,js}\"",
@@ -13,12 +11,13 @@
     "format:check": "prettier --check \"**/*.{ts,js,json,md}\"",
     "test": "vitest --run",
     "test:watch": "vitest",
-    "dev": "pnpm run build && node dist/main.js dev",
-    "download-files": "livekit-agents download-files",
-    "start": "node dist/main.js start"
+    "dev": "lk agent dev --deployment local-dev",
+    "console": "lk agent console",
+    "start": "node src/main.ts start",
+    "download-files": "livekit-agents download-files"
   },
   "engines": {
-    "node": ">=22.0.0",
+    "node": ">=24.0.0",
     "pnpm": ">=10.0.0"
   },
   "devDependencies": {

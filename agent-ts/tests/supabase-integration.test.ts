@@ -5,7 +5,7 @@
 // without a live database. Embeddings are stubbed with deterministic vectors.
 // Live, end-to-end runs against a real project happen separately.
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { type FakeSupabase, fakeVector, makeFakeSupabase, seededStore } from './fakeSupabase';
+import { type FakeSupabase, fakeVector, makeFakeSupabase, seededStore } from './fakeSupabase.ts';
 
 const holder = vi.hoisted(() => ({ client: null as FakeSupabase | null }));
 

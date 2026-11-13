@@ -8,7 +8,7 @@
 // `match_memories_hybrid` RPC, which fuses both branches with Reciprocal Rank
 // Fusion in the database.
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { embedText } from './embeddings';
+import { embedText } from './embeddings.ts';
 
 interface MemoryResult {
   memory_type: string;
