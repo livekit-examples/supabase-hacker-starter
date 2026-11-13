@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 
-# Use the official Node.js v22 base image
+# Use the official Node.js v26 base image
 # We use the slim variant to keep the image size smaller while still having essential tools
-ARG NODE_VERSION=22
+ARG NODE_VERSION=26
 FROM node:${NODE_VERSION}-slim AS base
 
 # Configure pnpm installation directory and ensure it is on PATH
@@ -20,7 +20,7 @@ ENV HF_HUB_CACHE="/app/.cache/huggingface/hub"
 RUN apt-get update -qq && apt-get install --no-install-recommends -y ca-certificates && rm -rf /var/lib/apt/lists/*
 
 # Pin pnpm version for reproducible builds
-RUN npm install -g pnpm@10
+RUN npm install -g pnpm@12
 
 # --- Build stage ---
 # Install dependencies, build the project, and prepare production assets
@@ -31,7 +31,7 @@ FROM base AS build
 WORKDIR /app
 
 # Copy just the dependency files first, for more efficient layer caching
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 # Install dependencies using pnpm
 # --frozen-lockfile ensures we use exact versions from pnpm-lock.yaml for reproducible builds
