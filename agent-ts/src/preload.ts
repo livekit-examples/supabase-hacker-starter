@@ -6,8 +6,8 @@
 // for this user in prior sessions. All writes land as assistant messages so the
 // LLM sees them before the first reply.
 import { llm } from '@livekit/agents';
-import { getSupabase } from './db/client';
-import { listMemories } from './tools/memory';
+import { getSupabase } from './db/client.ts';
+import { listMemories } from './tools/memory.ts';
 
 interface ProfileRow {
   id: string;

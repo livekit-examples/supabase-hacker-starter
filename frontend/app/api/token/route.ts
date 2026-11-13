@@ -20,6 +20,12 @@ const API_KEY = process.env.LIVEKIT_API_KEY;
 const API_SECRET = process.env.LIVEKIT_API_SECRET;
 const LIVEKIT_URL = process.env.LIVEKIT_URL;
 const AGENT_NAME = process.env.AGENT_NAME;
+// Deployment the dispatched agent is registered under. `pnpm dev:ts` / `pnpm dev:py`
+// run the agent with `lk agent dev --deployment local-dev`, so that's the default.
+// Set AGENT_DEPLOYMENT= (empty) to dispatch to the production deployment instead,
+// e.g. an agent started with `pnpm agent:*:start`, from the Docker image, or on LiveKit Cloud.
+// See https://docs.livekit.io/agents/server/agent-dispatch/#deployments
+const AGENT_DEPLOYMENT = process.env.AGENT_DEPLOYMENT ?? 'local-dev';
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
@@ -84,7 +90,13 @@ export async function POST(req: NextRequest) {
     const metadata = JSON.stringify({ user_id: userId });
     const roomConfig = AGENT_NAME
       ? new RoomConfiguration({
-          agents: [new RoomAgentDispatch({ agentName: AGENT_NAME, metadata })],
+          agents: [
+            new RoomAgentDispatch({
+              agentName: AGENT_NAME,
+              deployment: AGENT_DEPLOYMENT,
+              metadata,
+            }),
+          ],
         })
       : new RoomConfiguration();
 

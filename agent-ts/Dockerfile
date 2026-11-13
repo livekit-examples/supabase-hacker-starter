@@ -45,10 +45,6 @@ RUN pnpm exec livekit-agents download-files
 # (Excludes files specified in .dockerignore)
 COPY . .
 
-# Build the project
-# Your package.json must contain a "build" script, such as `"build": "tsc"`
-RUN pnpm build
-
 # Remove dev dependencies for a leaner production image
 RUN pnpm prune --prod
 
@@ -77,7 +73,7 @@ USER appuser
 # Set Node.js to production mode
 ENV NODE_ENV=production
 
-# Run the application
+# Run Node as PID 1 so SIGTERM reaches the worker and active jobs can drain.
+# Node strips the TypeScript types at load time, so there is no build step.
 # The "start" command tells the worker to connect to LiveKit and begin waiting for jobs.
-# Your package.json must contain a "start" script, such as `"start": "node dist/agent.js start"`
-CMD [ "pnpm", "start" ]
+CMD [ "node", "src/main.ts", "start" ]

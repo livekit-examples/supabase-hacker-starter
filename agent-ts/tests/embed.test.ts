@@ -5,7 +5,7 @@
 // It skips automatically unless both SUPABASE_URL and SUPABASE_SECRET_KEY
 // are set, so the suite stays green offline.
 import { describe, expect, it } from 'vitest';
-import { EMBEDDING_DIMENSIONS, embedText } from '../src/tools/embeddings';
+import { EMBEDDING_DIMENSIONS, embedText } from '../src/tools/embeddings.ts';
 
 const hasEnv = Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SECRET_KEY);
 

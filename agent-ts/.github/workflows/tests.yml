@@ -36,9 +36,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build project
-        run: pnpm run build
-
       - name: Run tests
         env:
           LIVEKIT_API_KEY: ${{ secrets.LIVEKIT_API_KEY }}

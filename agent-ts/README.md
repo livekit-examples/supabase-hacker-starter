@@ -34,7 +34,8 @@ The database schema, RLS policies, RPCs, and the `embed` Edge Function live unde
 
 ## Prerequisites
 
-- Node 22+ and [pnpm](https://pnpm.io/) 10+
+- Node 24+ and [pnpm](https://pnpm.io/) 10+ (the agent runs its TypeScript directly with Node's type stripping; there is no build step)
+- [LiveKit CLI](https://docs.livekit.io/reference/developer-tools/livekit-cli/) 2.19 or later (`lk`)
 - LiveKit Cloud project
 - A Supabase project with the `vector` extension enabled, the schema applied (see [`../supabase/migrations`](../supabase/migrations)), and the `embed` Edge Function deployed
 
@@ -83,8 +84,9 @@ pnpm db:seed             # create the demo user, profile, knowledge docs, and or
 ## Run the agent
 
 ```bash
-pnpm dev     # development mode (rebuilds, runs `node dist/main.js dev`)
-pnpm start   # production mode (assumes `pnpm build` already ran)
+pnpm console # speak to it in your terminal (`lk agent console`)
+pnpm dev     # run for use with the frontend (`lk agent dev --deployment local-dev`)
+pnpm start   # production mode (`node src/main.ts start`, what the Dockerfile runs)
 ```
 
 ### Testing locally with the Agent Console
@@ -95,7 +97,7 @@ To test this Node agent locally, run it in **dev mode** and interact with it fro
 pnpm dev
 ```
 
-Then, in the LiveKit Cloud **Agents** dashboard, click **Launch Console**, set the Agent name to `my-agent`, and talk to the agent in the browser. The Agent Console connects to your locally-running agent (it requires the Node SDK `>=1.2.4`; this starter uses 1.4.5), so there is nothing else to deploy. The bundled [`../frontend`](../frontend) is the other way to talk to the agent locally.
+Then, in the LiveKit Cloud **Agents** dashboard, click **Launch Console**, set the Agent name to `my-agent` and the deployment to `local-dev`, and talk to the agent in the browser. The Agent Console connects to your locally-running agent (`pnpm dev` also prints a console link for the `local-dev` deployment), so there is nothing else to deploy. The bundled [`../frontend`](../frontend) is the other way to talk to the agent locally.
 
 ## Tests
 
@@ -117,8 +119,10 @@ pnpm dev
 
 Both apps share the same LiveKit credentials. The frontend dispatches to whichever agent registers under `AGENT_NAME` (default `my-agent`). This Node agent and the Python sibling at `../agent-py` both register under `my-agent`, so **only run one of them at a time**. Either:
 
-- Stop the Python `uv run src/agent.py dev` process before running `pnpm dev` here, or
+- Stop the Python agent's `lk agent dev` process before running `pnpm dev` here, or
 - Change `agentName: "my-agent"` in `src/main.ts` and `AGENT_NAME` in `../frontend/.env.local` to a different name to run them side by side.
+
+`lk agent dev` registers the agent under a [deployment](https://docs.livekit.io/deploy/agents/deployments/), a random `dev-…` name unless you pass one. The frontend's token route dispatches to `AGENT_DEPLOYMENT` (default `local-dev`), which is why `pnpm dev` passes `--deployment local-dev`. For an agent running as production (`pnpm start`, Docker, LiveKit Cloud), set `AGENT_DEPLOYMENT=` (empty) in `../frontend/.env.local`.
 
 ## Who is the user?
 

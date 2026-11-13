@@ -14,9 +14,9 @@ import {
 import { audioEnhancement } from '@livekit/plugins-ai-coustics';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'node:url';
-import { VoiceAgent } from './agent';
-import { getSupabase } from './db/client';
-import { preloadUser } from './preload';
+import { VoiceAgent } from './agent.ts';
+import { getSupabase } from './db/client.ts';
+import { preloadUser } from './preload.ts';
 
 dotenv.config({ path: '.env.local' });
 

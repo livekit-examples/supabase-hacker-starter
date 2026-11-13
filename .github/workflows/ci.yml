@@ -63,9 +63,17 @@ jobs:
       - name: Test
         working-directory: agent-ts
         run: pnpm test
-      - name: Build
+      # The agent runs its TypeScript directly (Node type stripping); start the
+      # worker against an unreachable server to check it loads, with no
+      # deprecation warnings.
+      - name: Smoke test worker start
         working-directory: agent-ts
-        run: pnpm build
+        run: |
+          node src/main.ts --help
+          timeout 15 node src/main.ts start --url ws://127.0.0.1:9 --api-key ci --api-secret ci-secret-ci-secret-ci-secret-ci > start.log 2>&1 || true
+          tail -n 20 start.log
+          grep -q "starting worker" start.log
+          ! grep -qi "deprecat" start.log
       - name: Typecheck db seed
         working-directory: db
         run: pnpm install --frozen-lockfile && pnpm typecheck
@@ -85,6 +93,17 @@ jobs:
       - run: uv run ruff check .
       - run: uv run ruff format --check .
       - run: uv run pytest
+      # `python -m livekit.agents start` is what `lk agent start` and the Docker
+      # image run; start the worker against an unreachable server to check the
+      # agent loads, with no deprecation warnings.
+      - name: Smoke test worker start
+        env:
+          PYTHONWARNINGS: default
+        run: |
+          timeout 15 uv run -m livekit.agents start src/agent.py --url ws://127.0.0.1:9 --api-key ci --api-secret ci-secret-ci-secret-ci-secret-ci > start.log 2>&1 || true
+          tail -n 20 start.log
+          grep -q "starting worker" start.log
+          ! grep -qi "deprecat" start.log
 
   edge-function:
     runs-on: ubuntu-latest

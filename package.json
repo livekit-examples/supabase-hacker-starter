@@ -15,11 +15,12 @@
     "dev:py": "concurrently -n agent-py,frontend -c cyan,magenta \"pnpm dev:agent-py\" \"pnpm dev:frontend\"",
     "dev:frontend": "pnpm --dir frontend dev",
     "dev:agent-ts": "pnpm --dir agent-ts dev",
-    "dev:agent-py": "uv --directory agent-py run src/agent.py dev",
+    "dev:agent-py": "cd agent-py && lk agent dev --deployment local-dev",
 
-    "agent:py:console": "uv --directory agent-py run src/agent.py console",
+    "agent:py:console": "cd agent-py && lk agent console",
+    "agent:ts:console": "pnpm --dir agent-ts console",
     "agent:ts:start": "pnpm --dir agent-ts start",
-    "agent:py:start": "uv --directory agent-py run src/agent.py start",
+    "agent:py:start": "uv --directory agent-py run -m livekit.agents start src/agent.py",
     "agent:ts:download-files": "pnpm --dir agent-ts download-files",
     "agent:py:download-files": "uv --directory agent-py run -m livekit.agents download-files",
 

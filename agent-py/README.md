@@ -34,6 +34,7 @@ agent-py/
 - A Supabase project with the schema, RLS policies, RPC functions, and the `embed` Edge Function applied (see the repo-root `supabase/` directory and `db/`)
 - Supabase **modern API keys** — the agent authenticates with the secret key (`sb_secret_...`); the browser uses the publishable key
 - LiveKit Cloud project
+- [LiveKit CLI](https://docs.livekit.io/reference/developer-tools/livekit-cli/) 2.19 or later (`lk`)
 
 ## Setup
 
@@ -71,9 +72,9 @@ Copy the `DEMO_USER_ID` printed by the seed step into `.env.local` so console mo
 ## Run the agent
 
 ```bash
-uv run src/agent.py console     # speak to it in your terminal
-uv run src/agent.py dev         # run for use with a frontend
-uv run src/agent.py start       # production mode
+lk agent console                             # speak to it in your terminal
+lk agent dev --deployment local-dev          # run for use with the frontend (see ../README.md, Agent dispatch)
+uv run -m livekit.agents start src/agent.py  # production mode (what the Dockerfile runs)
 ```
 
 ## Tests
@@ -109,7 +110,7 @@ user_id = meta.get("user_id", DEFAULT_USER_ID)
 
 The agent connects with the **secret key** (`SUPABASE_SECRET_KEY`, an `sb_secret_...` value), which bypasses Row Level Security, so it must scope every query by the verified `user_id` itself. RLS is what protects the browser-side anon client. The resolved id is also stashed on `ctx.proc.userdata` so `on_session_end` can write the session report under the correct user.
 
-Console mode (`uv run src/agent.py console`) has no frontend, so `user_id` falls back to the `DEMO_USER_ID` environment variable and the seeded demo profile.
+Console mode (`lk agent console`) has no frontend, so `user_id` falls back to the `DEMO_USER_ID` environment variable and the seeded demo profile.
 
 ## Table layout
 
