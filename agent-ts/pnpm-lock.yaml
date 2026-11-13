@@ -10,16 +10,19 @@ importers:
     dependencies:
       '@livekit/agents':
         specifier: ^1.4.5
-        version: 1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)
+        version: 1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)
       '@livekit/agents-plugin-livekit':
         specifier: ^1.4.5
-        version: 1.9.5(@livekit/agents@1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))
+        version: 1.9.5(@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))
       '@livekit/agents-plugin-silero':
         specifier: ^1.4.5
-        version: 1.9.5(@livekit/agents@1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))
+        version: 1.9.5(@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)
       '@livekit/plugins-ai-coustics':
         specifier: ^0.2.15
-        version: 0.2.15(@livekit/agents@1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))
+        version: 0.2.15(@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)
+      '@livekit/rtc-node':
+        specifier: ^1.2.2
+        version: 1.2.2
       '@supabase/supabase-js':
         specifier: ^2.108.1
         version: 2.119.0(@opentelemetry/api@1.10.0)
@@ -114,6 +117,9 @@ packages:
 
   '@cacheable/utils@2.5.0':
     resolution: {integrity: sha512-buipgOVDkkPXNR5+xBpDw7Zk2n1EvU7qBJCNUcL7rhQ//kfpOXPAvQ511Os0vpLYJ1pZnvudNytkQt2hst3wqA==}
+
+  '@datastructures-js/deque@1.0.8':
+    resolution: {integrity: sha512-PSBhJ2/SmeRPRHuBv7i/fHWIdSC3JTyq56qb+Rq0wjOagi0/fdV5/B/3Md5zFZus/W6OkSPMaxMKKMNMrSmubg==}
 
   '@emnapi/core@2.0.0-beta.2':
     resolution: {integrity: sha512-MzCVoWtcg4Pm2B3je5mMvYMvj3MmBKw+fU7vbsJc9/iT8ip6/eYIHo/Dsm/mr+wsHB6SEyJDuxB09Yy6r/8+4A==}
@@ -863,6 +869,46 @@ packages:
 
   '@livekit/protocol@1.54.0':
     resolution: {integrity: sha512-981RI+N+cZl52IYIUfW2F2gBLOvPHY2fpROADxJlLLuZ1n/cBZsza142lRpn2U08YLfeI4totefzJuq24+/nIQ==}
+
+  '@livekit/rtc-ffi-bindings-darwin-arm64@0.13.2':
+    resolution: {integrity: sha512-XPdp00ZHM5kiCRdKNxGer5eDrlq1KO4ck7CAisX+fWENUxTXzMhOPzbIxfjH28fMVw24Ajs8ViMJwvIUIKuBQA==}
+    engines: {node: '>= 18'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@livekit/rtc-ffi-bindings-darwin-x64@0.13.2':
+    resolution: {integrity: sha512-36R0qqV7JeECWPp68uJtHy46gPfDl+xlGabnUiSz2sSutmrjtNK0bTpzX2OgoP7HPqMDep0bBySTnkv/8RCPtg==}
+    engines: {node: '>= 18'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@livekit/rtc-ffi-bindings-linux-arm64-gnu@0.13.2':
+    resolution: {integrity: sha512-flYJL65NG+o1tNisPXY3Mhx0+fGb7DlBgvTaMzwYsc+KHhefEUgIRSSo78JEF/IM1MQVEneLQsGPqXuqEMC3aA==}
+    engines: {node: '>= 18'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@livekit/rtc-ffi-bindings-linux-x64-gnu@0.13.2':
+    resolution: {integrity: sha512-acxG8CXMCN4Dgx+nl/1n4CP2G1c8YgmYBs2cA/BpUwYUXsCf9nlnJKRa1i/PIQlTFshdnbgq31RJtz4b3cdGNA==}
+    engines: {node: '>= 18'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@livekit/rtc-ffi-bindings-win32-x64-msvc@0.13.2':
+    resolution: {integrity: sha512-ho3Q6T5kdvaXEVMvvLl+RmuStlDXzwqg3rY7hm95eZXeRwSCAmkfRz+cHuUDzztCiYNAey4zI1jPkHSRK5lTGg==}
+    engines: {node: '>= 18'}
+    cpu: [x64]
+    os: [win32]
+
+  '@livekit/rtc-ffi-bindings@0.13.2':
+    resolution: {integrity: sha512-0JrZABVvpQt/PcCR51udLxm0JAPF3jt8ncQOBu/H8qlNTLAqW00qTVhYp7hrtJ7REd7MKxIkgv+zThLQVpXXzQ==}
+    engines: {node: '>= 18'}
+
+  '@livekit/rtc-node@1.2.2':
+    resolution: {integrity: sha512-OiSB0d+2xuYarQktFVbVUA0BnhgALEf2Qg52EwNriMGDbua/1Pmw4793+FuN+zTXG0b7ntGFHdy1rRqu0+GHqA==}
+    engines: {node: '>= 18'}
 
   '@livekit/throws-transformer@0.1.8':
     resolution: {integrity: sha512-AaSwQfIaG6YArKOCO+5/DgI8HfL19oHdrkyI0LJJVCqGeZXzPsZIO/Nm/SKUHbT1ERGhF5c34X8CcVWeOePpIQ==}
@@ -2482,6 +2528,8 @@ snapshots:
       hashery: 1.5.1
       keyv: 5.6.0
 
+  '@datastructures-js/deque@1.0.8': {}
+
   '@emnapi/core@2.0.0-beta.2':
     dependencies:
       '@emnapi/wasi-threads': 2.2.0
@@ -2871,23 +2919,24 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@livekit/agents-plugin-livekit@1.9.5(@livekit/agents@1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))':
+  '@livekit/agents-plugin-livekit@1.9.5(@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))':
     dependencies:
       '@huggingface/hub': 2.4.1
       '@huggingface/transformers': 4.2.0
-      '@livekit/agents': 1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)
+      '@livekit/agents': 1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)
       onnxruntime-node: 1.24.3
 
-  '@livekit/agents-plugin-silero@1.9.5(@livekit/agents@1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))':
+  '@livekit/agents-plugin-silero@1.9.5(@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)':
     dependencies:
-      '@livekit/agents': 1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)
+      '@livekit/agents': 1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)
+      '@livekit/rtc-node': 1.2.2
       onnxruntime-node: 1.24.3
       ws: 8.22.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@livekit/agents@1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)':
+  '@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)':
     dependencies:
       '@bufbuild/protobuf': 1.10.1
       '@livekit/av': 10.1.0
@@ -2895,6 +2944,7 @@ snapshots:
       '@livekit/local-inference': 0.2.7
       '@livekit/mutex': 1.1.1
       '@livekit/protocol': 1.54.0
+      '@livekit/rtc-node': 1.2.2
       '@livekit/throws-transformer': 0.1.8(typescript@6.0.3)
       '@livekit/typed-emitter': 3.0.0
       '@opentelemetry/api': 1.10.0
@@ -3036,9 +3086,10 @@ snapshots:
   '@livekit/plugins-ai-coustics-x86_64-unknown-linux-gnu@0.2.15':
     optional: true
 
-  '@livekit/plugins-ai-coustics@0.2.15(@livekit/agents@1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))':
+  '@livekit/plugins-ai-coustics@0.2.15(@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)':
     dependencies:
-      '@livekit/agents': 1.9.5(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)
+      '@livekit/agents': 1.9.5(@livekit/rtc-node@1.2.2)(@types/node@22.20.5)(typescript@6.0.3)(zod@4.6.7)
+      '@livekit/rtc-node': 1.2.2
       ffi-rs: 1.3.7
       pino: 9.13.1
       pino-pretty: 13.2.0
@@ -3057,6 +3108,40 @@ snapshots:
   '@livekit/protocol@1.54.0':
     dependencies:
       '@bufbuild/protobuf': 1.10.1
+
+  '@livekit/rtc-ffi-bindings-darwin-arm64@0.13.2':
+    optional: true
+
+  '@livekit/rtc-ffi-bindings-darwin-x64@0.13.2':
+    optional: true
+
+  '@livekit/rtc-ffi-bindings-linux-arm64-gnu@0.13.2':
+    optional: true
+
+  '@livekit/rtc-ffi-bindings-linux-x64-gnu@0.13.2':
+    optional: true
+
+  '@livekit/rtc-ffi-bindings-win32-x64-msvc@0.13.2':
+    optional: true
+
+  '@livekit/rtc-ffi-bindings@0.13.2':
+    dependencies:
+      '@bufbuild/protobuf': 1.10.1
+    optionalDependencies:
+      '@livekit/rtc-ffi-bindings-darwin-arm64': 0.13.2
+      '@livekit/rtc-ffi-bindings-darwin-x64': 0.13.2
+      '@livekit/rtc-ffi-bindings-linux-arm64-gnu': 0.13.2
+      '@livekit/rtc-ffi-bindings-linux-x64-gnu': 0.13.2
+      '@livekit/rtc-ffi-bindings-win32-x64-msvc': 0.13.2
+
+  '@livekit/rtc-node@1.2.2':
+    dependencies:
+      '@datastructures-js/deque': 1.0.8
+      '@livekit/mutex': 1.1.1
+      '@livekit/rtc-ffi-bindings': 0.13.2
+      '@livekit/typed-emitter': 3.0.0
+      pino: 9.13.1
+      pino-pretty: 13.2.0
 
   '@livekit/throws-transformer@0.1.8(typescript@6.0.3)':
     dependencies:

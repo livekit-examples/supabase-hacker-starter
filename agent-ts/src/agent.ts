@@ -18,8 +18,7 @@ import { forget, listMemories, recall, remember, searchMemory } from './tools/me
 // merged into the `preferences` jsonb under the given key. Anything outside
 // this map belongs in `memories`.
 type ProfileTarget =
-  | { kind: 'column'; column: 'name' | 'email' }
-  | { kind: 'preference'; key: string };
+  { kind: 'column'; column: 'name' | 'email' } | { kind: 'preference'; key: string };
 
 const PROFILE_FIELDS: Record<string, ProfileTarget> = {
   name: { kind: 'column', column: 'name' },

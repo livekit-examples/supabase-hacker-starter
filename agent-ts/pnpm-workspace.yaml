@@ -1,4 +1,10 @@
 # pnpm 11+ fails installs on unreviewed dependency build scripts (strictDepBuilds).
-# esbuild (via tsx) ships prebuilt platform binaries, so its install script is not needed.
+# These scripts were never run under pnpm 10 either (it skipped unapproved builds):
+# the packages ship prebuilt binaries, so keep them disabled.
 allowBuilds:
+  '@livekit/blingfire': false
+  '@livekit/local-inference': false
   esbuild: false
+  onnxruntime-node: false
+  protobufjs: false
+  sharp: false
