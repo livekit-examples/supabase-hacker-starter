@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@livekit/agents':
         specifier: ^1.9.5
-        version: 1.9.5(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)
+        version: 1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)
       '@livekit/plugins-ai-coustics':
         specifier: ^0.3.5
-        version: 0.3.5(@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)
+        version: 0.3.5(@livekit/agents@1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)
       '@livekit/rtc-node':
         specifier: ^1.2.2
         version: 1.2.2
@@ -526,11 +526,11 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@livekit/agents@1.9.5':
-    resolution: {integrity: sha512-Tza6Ks1PkEA+mUiKSNwMPOtWfqbeo/YdLV8pMAC/BSBNJRc4BWN68TOS8Iy5HhuCU0HcyVr57gPZQShE31+3cg==}
+  '@livekit/agents@1.10.0':
+    resolution: {integrity: sha512-sxKJ5zg1JaQVBxw0exARmPmfRxLTz+Cby1ysxUROk7NSAjgIgoXIsS1sLmkbrWVVqDOu4sIMcdiaakDET6R/RA==}
     hasBin: true
     peerDependencies:
-      '@livekit/rtc-node': ^1.1.0
+      '@livekit/rtc-node': ^1.2.2
       '@modelcontextprotocol/client': ^2.3.1
       zod: ^3.25.76 || ^4.1.8
     peerDependenciesMeta:
@@ -611,33 +611,33 @@ packages:
     resolution: {integrity: sha512-NBkAm31MpXyatfstI5YlaPlU2TCcvwoyghgODeieZU63TjhGM9tTHDsh10P8FP5nJ67nJLN+ZqbH3L1Pkdvpjg==}
     engines: {node: '>=18.0.0'}
 
-  '@livekit/local-inference-darwin-arm64@0.2.7':
-    resolution: {integrity: sha512-di4SAKcV/i9tCozvbtwZLBtRPAJYWCcLNNVWduqAQSaV2/klT2CZsGpoN0s7t8NamvL78q1LxzL2iJVc6pc75g==}
+  '@livekit/local-inference-darwin-arm64@0.3.1':
+    resolution: {integrity: sha512-yLe4SNxe7NRr6DuB5j6MHzFT3Gc8q3+By0AFVm4ouv2LTU2TJ3YIO3aLCdWrmUjT6xWAaUu0aAdyBvkQZmnmlg==}
     cpu: [arm64]
     os: [darwin]
 
-  '@livekit/local-inference-darwin-x64@0.2.7':
-    resolution: {integrity: sha512-5e2HnjLSOwh1QfHQKbAgy0HDxAZhpOMLpwcUSXWIPeQEGOu+iu0s1f8xsRvz/LWxPOsZJn0bxFkfadnh5dvPMg==}
+  '@livekit/local-inference-darwin-x64@0.3.1':
+    resolution: {integrity: sha512-5A1TiXnQrLBt8JdmgYCjjY0xUz3IpT9NxwlY/IYx6qz38JdvznI/0AG0lSU8jE/XoGT0x4yynO/n9dP1Mym8Kw==}
     cpu: [x64]
     os: [darwin]
 
-  '@livekit/local-inference-linux-arm64-gnu@0.2.7':
-    resolution: {integrity: sha512-zUP9RverLt66kQ9slr+T3FY1Ad9IwJ3BPnJsEB/NxUeflq5g0dbUjIjGvjBCL6DktqLRyXixEJx1J5QUKUWUsw==}
+  '@livekit/local-inference-linux-arm64-gnu@0.3.1':
+    resolution: {integrity: sha512-Aw5NFw1dsWL1d/GYFEbzEk9jUvj9QjS7DFc00K/onLbSphD30mG+a+GvxYW872XUlvRkh3eUblUB+lDBokXZ7w==}
     cpu: [arm64]
     os: [linux]
 
-  '@livekit/local-inference-linux-x64-gnu@0.2.7':
-    resolution: {integrity: sha512-QG/0k0BwqnSz/qMU+Z/k0411iXkbVEdZ8XMBPjZGOorVYTQuMlovYd9hkSZvgnD84o/xeAMJekC6NcXv45FlGg==}
+  '@livekit/local-inference-linux-x64-gnu@0.3.1':
+    resolution: {integrity: sha512-hIKKfMQWNQ8qLzg8i79NkEgiElV2BgBK9D+YvDnWFZct7WrAflxmCOQj/n2Et2zVMTL1u9HTU9QvyZj2vrKHOg==}
     cpu: [x64]
     os: [linux]
 
-  '@livekit/local-inference-win32-x64-msvc@0.2.7':
-    resolution: {integrity: sha512-8KB0xfDgYstfvOtAshRsL0zRkwGOIGzOI4NqGMq1HBr+3wMuCrVEjspjpHvuMHCYVzihprE9L/ivYqpXBAGrXw==}
+  '@livekit/local-inference-win32-x64-msvc@0.3.1':
+    resolution: {integrity: sha512-3p0187XMeEAbbp8gPFhWFwr9SwmQVFlwWI48HukbpPnhiYK/jEsAGeHzXd2uEISu2qlj6Ee1euhPoWALAXeqxw==}
     cpu: [x64]
     os: [win32]
 
-  '@livekit/local-inference@0.2.7':
-    resolution: {integrity: sha512-3XniFtpZHiIlAgVibhIU1YDaHbh8uScYojwtqaI1Em440w+fzix3wPXLv+IPePAmuusJzvHLrEFaTwojaBLk4w==}
+  '@livekit/local-inference@0.3.1':
+    resolution: {integrity: sha512-XlVVh9MeqheD+wFzp2x20s+EDKg2ethL0j4D2L25wd+wnbRXOIsj/nt0mMruX+Q4Dd0XS2f4gdCIQXz7AFjVzA==}
     engines: {node: '>=18.0.0'}
 
   '@livekit/mutex@1.1.1':
@@ -2477,12 +2477,12 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)':
+  '@livekit/agents@1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)':
     dependencies:
       '@bufbuild/protobuf': 1.10.1
       '@livekit/av': 10.1.0
       '@livekit/blingfire': 1.2.0
-      '@livekit/local-inference': 0.2.7
+      '@livekit/local-inference': 0.3.1
       '@livekit/mutex': 1.1.1
       '@livekit/protocol': 1.54.0
       '@livekit/rtc-node': 1.2.2
@@ -2585,30 +2585,30 @@ snapshots:
       '@livekit/blingfire-linux-x64-musl': 1.2.0
       '@livekit/blingfire-win32-x64-msvc': 1.2.0
 
-  '@livekit/local-inference-darwin-arm64@0.2.7':
+  '@livekit/local-inference-darwin-arm64@0.3.1':
     optional: true
 
-  '@livekit/local-inference-darwin-x64@0.2.7':
+  '@livekit/local-inference-darwin-x64@0.3.1':
     optional: true
 
-  '@livekit/local-inference-linux-arm64-gnu@0.2.7':
+  '@livekit/local-inference-linux-arm64-gnu@0.3.1':
     optional: true
 
-  '@livekit/local-inference-linux-x64-gnu@0.2.7':
+  '@livekit/local-inference-linux-x64-gnu@0.3.1':
     optional: true
 
-  '@livekit/local-inference-win32-x64-msvc@0.2.7':
+  '@livekit/local-inference-win32-x64-msvc@0.3.1':
     optional: true
 
-  '@livekit/local-inference@0.2.7':
+  '@livekit/local-inference@0.3.1':
     dependencies:
       node-gyp-build: 4.8.4
     optionalDependencies:
-      '@livekit/local-inference-darwin-arm64': 0.2.7
-      '@livekit/local-inference-darwin-x64': 0.2.7
-      '@livekit/local-inference-linux-arm64-gnu': 0.2.7
-      '@livekit/local-inference-linux-x64-gnu': 0.2.7
-      '@livekit/local-inference-win32-x64-msvc': 0.2.7
+      '@livekit/local-inference-darwin-arm64': 0.3.1
+      '@livekit/local-inference-darwin-x64': 0.3.1
+      '@livekit/local-inference-linux-arm64-gnu': 0.3.1
+      '@livekit/local-inference-linux-x64-gnu': 0.3.1
+      '@livekit/local-inference-win32-x64-msvc': 0.3.1
 
   '@livekit/mutex@1.1.1': {}
 
@@ -2627,9 +2627,9 @@ snapshots:
   '@livekit/plugins-ai-coustics-x86_64-unknown-linux-gnu@0.3.5':
     optional: true
 
-  '@livekit/plugins-ai-coustics@0.3.5(@livekit/agents@1.9.5(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)':
+  '@livekit/plugins-ai-coustics@0.3.5(@livekit/agents@1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)':
     dependencies:
-      '@livekit/agents': 1.9.5(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)
+      '@livekit/agents': 1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)
       '@livekit/rtc-node': 1.2.2
       '@ubjs/core': 0.31.0-5
       '@ubjs/node': 0.31.0-5
