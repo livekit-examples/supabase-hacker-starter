@@ -6,7 +6,7 @@
   "minimumReleaseAge": "1 day",
   "packageRules": [
     {
-      "description": "Hold Python below 3.15 until livekit-agents dependencies (e.g. livekit-blingfire) ship 3.15 wheels",
+      "description": "Hold Python below 3.15: livekit-agents (1.8.x) declares requires-python <3.15 and onnxruntime has no cp315 wheels yet (livekit-blingfire 1.2.1 now ships cp315). Lift when both support 3.15.",
       "matchDepNames": [
         "python"
       ],

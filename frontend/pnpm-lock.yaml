@@ -233,8 +233,8 @@ importers:
         specifier: ^2.119.0
         version: 2.119.0
       '@xyflow/react':
-        specifier: ^13.0.0
-        version: 13.0.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(use-sync-external-store@1.7.0(react@19.3.1))
+        specifier: ^13.0.1
+        version: 13.0.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(use-sync-external-store@1.7.0(react@19.3.1))
       ai:
         specifier: ^7.0.170
         version: 7.0.173(zod@4.6.7)
@@ -260,8 +260,8 @@ importers:
         specifier: ^2.24.0
         version: 2.24.1(@types/dom-mediacapture-record@1.0.22)
       livekit-server-sdk:
-        specifier: ^2.19.3
-        version: 2.19.3
+        specifier: ^2.20.0
+        version: 2.20.0
       lucide-react:
         specifier: ^1.72.0
         version: 1.73.0(@types/react@19.3.0)(react@19.3.1)
@@ -1988,8 +1988,8 @@ packages:
   '@workflow/serde@4.1.0':
     resolution: {integrity: sha512-pav4F2BoirECWR7Nf1TKt+2eETcBj7jj4cBefQ8VXQCA6NPkaKeLfj/zMgi+3zYV5ZIBT4GuUiphsj0/b9hPQQ==}
 
-  '@xyflow/react@13.0.0':
-    resolution: {integrity: sha512-ycvy0EtfLE83gB8vMC+3ZR3hEppinAFbrK1cxV0xxu1lpeIRIMBDC3lXsa31s1cL30zBBGWxiYdHSCAUaIum4A==}
+  '@xyflow/react@13.0.1':
+    resolution: {integrity: sha512-jjB6UcDYCMf3JmUbfTSGvI5dhCY+VC2rxamkMIF855raTj33yzYanBEVoPTMvHWERZZUuQAwJG56UEowXn5EdQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@types/react': '>=18'
@@ -3017,8 +3017,8 @@ packages:
     peerDependencies:
       '@types/dom-mediacapture-record': ^1
 
-  livekit-server-sdk@2.19.3:
-    resolution: {integrity: sha512-DRcTr/aU2759IW9aJRnM+fL3kRFbDuS7DSfwSRRP7NBByWbD58EsdGkzYFZa1Ka4g7ks1HPvEQaAmE5b6WHNPQ==}
+  livekit-server-sdk@2.20.0:
+    resolution: {integrity: sha512-kkzvWp50q8oPGhJp7gpgGSPx2riQAzTZQXOBKz7ze58Be+dzdArneTbXM9ATZ5BdRFFvN+sxGEfGYyXAczLFig==}
     engines: {node: '>=19'}
 
   locate-path@6.0.0:
@@ -5616,7 +5616,7 @@ snapshots:
 
   '@workflow/serde@4.1.0': {}
 
-  '@xyflow/react@13.0.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(use-sync-external-store@1.7.0(react@19.3.1))':
+  '@xyflow/react@13.0.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(use-sync-external-store@1.7.0(react@19.3.1))':
     dependencies:
       '@xyflow/system': 1.0.0
       classcat: 5.0.5
@@ -6854,7 +6854,7 @@ snapshots:
       typed-emitter: 2.1.0
       webrtc-adapter: 9.0.6
 
-  livekit-server-sdk@2.19.3:
+  livekit-server-sdk@2.20.0:
     dependencies:
       '@bufbuild/protobuf': 1.10.1
       '@livekit/protocol': 1.53.0
