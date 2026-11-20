@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "livekit-supabase-starter-agent"
 version = "1.0.0"
 description = "Voice AI agent that integrates Supabase with LiveKit Agents (5 patterns)"
-requires-python = ">=3.11, <3.15"
+requires-python = ">=3.11, <3.16"
 
 dependencies = [
     "livekit-agents~=1.8",

@@ -6,13 +6,6 @@
   "minimumReleaseAge": "1 day",
   "packageRules": [
     {
-      "description": "Hold Python below 3.15: livekit-agents 1.8.12 declares requires-python <3.15. livekit-agents 1.8.13 (published 2026-11-18) allows <3.16 and becomes eligible once past minimumReleaseAge; onnxruntime is no longer in the lock and livekit-blingfire / livekit-local-inference ship cp315 wheels. Lift after upgrading to livekit-agents >=1.8.13 and verifying every compiled dependency has cp315 wheels.",
-      "matchDepNames": [
-        "python"
-      ],
-      "allowedVersions": "<3.15"
-    },
-    {
       "description": "Hold TypeScript below 7 until typescript-eslint supports TS 7 (typescript-eslint 8.x supports TS <6.1)",
       "matchPackageNames": [
         "typescript"

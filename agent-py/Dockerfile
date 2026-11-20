@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 
-# Use the official UV Python base image with Python 3.14 on Debian Trixie
+# Use the official UV Python base image with Python 3.15 on Debian Trixie
 # UV is a fast Python package manager that provides better performance than pip
 # We use the slim variant to keep the image size smaller while still having essential tools
-ARG PYTHON_VERSION=3.14
+ARG PYTHON_VERSION=3.15
 FROM ghcr.io/astral-sh/uv:python${PYTHON_VERSION}-trixie-slim AS base
 
 # Keeps Python from buffering stdout and stderr to avoid situations where
