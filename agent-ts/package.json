@@ -35,10 +35,10 @@
     "vitest": "^5.1.1"
   },
   "dependencies": {
-    "@livekit/agents": "^1.9.5",
+    "@livekit/agents": "^1.10.1",
     "@livekit/plugins-ai-coustics": "^0.3.6",
-    "@livekit/rtc-node": "^1.2.2",
-    "@supabase/supabase-js": "^2.119.1",
+    "@livekit/rtc-node": "^1.2.3",
+    "@supabase/supabase-js": "^2.119.2",
     "dotenv": "^18.0.10",
     "zod": "^4.6.7"
   }

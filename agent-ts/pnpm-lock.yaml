@@ -9,17 +9,17 @@ importers:
   .:
     dependencies:
       '@livekit/agents':
-        specifier: ^1.9.5
-        version: 1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)
+        specifier: ^1.10.1
+        version: 1.10.1(@livekit/rtc-node@1.2.3)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)
       '@livekit/plugins-ai-coustics':
         specifier: ^0.3.6
-        version: 0.3.6(@livekit/agents@1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)
+        version: 0.3.6(@livekit/agents@1.10.1(@livekit/rtc-node@1.2.3)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.3)
       '@livekit/rtc-node':
-        specifier: ^1.2.2
-        version: 1.2.2
+        specifier: ^1.2.3
+        version: 1.2.3
       '@supabase/supabase-js':
-        specifier: ^2.119.1
-        version: 2.119.1(@opentelemetry/api@1.10.0)
+        specifier: ^2.119.2
+        version: 2.119.2(@opentelemetry/api@1.10.0)
       dotenv:
         specifier: ^18.0.10
         version: 18.0.10
@@ -529,8 +529,8 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@livekit/agents@1.10.0':
-    resolution: {integrity: sha512-sxKJ5zg1JaQVBxw0exARmPmfRxLTz+Cby1ysxUROk7NSAjgIgoXIsS1sLmkbrWVVqDOu4sIMcdiaakDET6R/RA==}
+  '@livekit/agents@1.10.1':
+    resolution: {integrity: sha512-POqIdkXYc4eUR913unmimddGONQ87xfhbQ2eurOmy6uGioFLqABm1RRkZeaw57GsHqRzxfVcqbsP6IDqXwhfiQ==}
     hasBin: true
     peerDependencies:
       '@livekit/rtc-node': ^1.2.2
@@ -684,44 +684,44 @@ packages:
   '@livekit/protocol@1.54.0':
     resolution: {integrity: sha512-981RI+N+cZl52IYIUfW2F2gBLOvPHY2fpROADxJlLLuZ1n/cBZsza142lRpn2U08YLfeI4totefzJuq24+/nIQ==}
 
-  '@livekit/rtc-ffi-bindings-darwin-arm64@0.13.2':
-    resolution: {integrity: sha512-XPdp00ZHM5kiCRdKNxGer5eDrlq1KO4ck7CAisX+fWENUxTXzMhOPzbIxfjH28fMVw24Ajs8ViMJwvIUIKuBQA==}
+  '@livekit/rtc-ffi-bindings-darwin-arm64@0.15.0':
+    resolution: {integrity: sha512-oCtNfA1/HcjU59yL9OvBCNFf+151JCJipbyAL2RByA93NncuDrWV828T78b7JpY5pBJlTefr+cvIpaQQtGTo9Q==}
     engines: {node: '>= 18'}
     cpu: [arm64]
     os: [darwin]
 
-  '@livekit/rtc-ffi-bindings-darwin-x64@0.13.2':
-    resolution: {integrity: sha512-36R0qqV7JeECWPp68uJtHy46gPfDl+xlGabnUiSz2sSutmrjtNK0bTpzX2OgoP7HPqMDep0bBySTnkv/8RCPtg==}
+  '@livekit/rtc-ffi-bindings-darwin-x64@0.15.0':
+    resolution: {integrity: sha512-7gGdExgL3G74nsWZxNK/wFNYIfhosiCHHE4UNbPyCMiUwoHsHvZOln+me7kLR3QlApWX3IkwZus7AvJTrMwtlQ==}
     engines: {node: '>= 18'}
     cpu: [x64]
     os: [darwin]
 
-  '@livekit/rtc-ffi-bindings-linux-arm64-gnu@0.13.2':
-    resolution: {integrity: sha512-flYJL65NG+o1tNisPXY3Mhx0+fGb7DlBgvTaMzwYsc+KHhefEUgIRSSo78JEF/IM1MQVEneLQsGPqXuqEMC3aA==}
+  '@livekit/rtc-ffi-bindings-linux-arm64-gnu@0.15.0':
+    resolution: {integrity: sha512-YndyCJV54uohq0G4xcamTeVyp4edwXFcJ98c5liAVshpPXfKo9WCAEMdLzNkpgBvlJfGnM52Pmy41j4aaQT1dw==}
     engines: {node: '>= 18'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@livekit/rtc-ffi-bindings-linux-x64-gnu@0.13.2':
-    resolution: {integrity: sha512-acxG8CXMCN4Dgx+nl/1n4CP2G1c8YgmYBs2cA/BpUwYUXsCf9nlnJKRa1i/PIQlTFshdnbgq31RJtz4b3cdGNA==}
+  '@livekit/rtc-ffi-bindings-linux-x64-gnu@0.15.0':
+    resolution: {integrity: sha512-LwkpWwVwsAqnU3wzZYjRu1L/0tKLFwQ3/Doc9NQ9b1G5m+iiuuFr3+guz7dEMPBH64L68sX8kjls4uI2jbxP/Q==}
     engines: {node: '>= 18'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@livekit/rtc-ffi-bindings-win32-x64-msvc@0.13.2':
-    resolution: {integrity: sha512-ho3Q6T5kdvaXEVMvvLl+RmuStlDXzwqg3rY7hm95eZXeRwSCAmkfRz+cHuUDzztCiYNAey4zI1jPkHSRK5lTGg==}
+  '@livekit/rtc-ffi-bindings-win32-x64-msvc@0.15.0':
+    resolution: {integrity: sha512-2i1RpvZtEM5Q9R/7sKjbBgoNIH+GxfZyUUZc5FoI+Rtz3t2V7UE179Wwp0bKqM9jJ/O10UvGQeNrMjjRuckHnA==}
     engines: {node: '>= 18'}
     cpu: [x64]
     os: [win32]
 
-  '@livekit/rtc-ffi-bindings@0.13.2':
-    resolution: {integrity: sha512-0JrZABVvpQt/PcCR51udLxm0JAPF3jt8ncQOBu/H8qlNTLAqW00qTVhYp7hrtJ7REd7MKxIkgv+zThLQVpXXzQ==}
+  '@livekit/rtc-ffi-bindings@0.15.0':
+    resolution: {integrity: sha512-RPK2Iu7TsyUbiYZHOeheLenLFLY9ur4fvgn0h9tGnQOpjt6h1w/PgrTxU8C3+B9QGSVSl2IvOb5IUVcd9zhLQw==}
     engines: {node: '>= 18'}
 
-  '@livekit/rtc-node@1.2.2':
-    resolution: {integrity: sha512-OiSB0d+2xuYarQktFVbVUA0BnhgALEf2Qg52EwNriMGDbua/1Pmw4793+FuN+zTXG0b7ntGFHdy1rRqu0+GHqA==}
+  '@livekit/rtc-node@1.2.3':
+    resolution: {integrity: sha512-Fe8r/6kzE/GK++w/RyM3rD3ylT5a+g/CfGE1a9DBcNvwCg4O+nvVe3I1CWVK63o2O/PfOyiMTMpuDV/sLETRPA==}
     engines: {node: '>= 18'}
 
   '@livekit/throws-transformer@0.1.8':
@@ -982,31 +982,31 @@ packages:
   '@rolldown/pluginutils@1.1.0':
     resolution: {integrity: sha512-K+NU2HDCEem4sClgHH4ZZXwdJeNFkJo+hRk479DIwdIviAPN2hFJH1KHHwg8CxHQXvi0M5XY4deTXINfIiSG6w==}
 
-  '@supabase/auth-js@2.119.1':
-    resolution: {integrity: sha512-EE7nQBWvNbfRPTDaPuDlpKqa+be+HFm29iuOFeoWSH+kWGdkTb1dif8Beu70TOaZyPauLuP8++ksbrlxbK4vyA==}
+  '@supabase/auth-js@2.119.2':
+    resolution: {integrity: sha512-zWi7pGT6XIMWG0Ja5Unvsv9ixwgLTq/pnWNzGVwVXlr/onraf3v4VwepCFSlxGrvNyKRmhn7O6e4CHF1TJg73Q==}
     engines: {node: '>=22.0.0'}
 
-  '@supabase/functions-js@2.119.1':
-    resolution: {integrity: sha512-IgV04Sjpt+Sy/cZbDmDVqOVmriAZWn9gibUnanbmlS1iJIbquX7Hvp+k39QR/TgrgDZ9d1b2MDg7RAEuepgvxw==}
+  '@supabase/functions-js@2.119.2':
+    resolution: {integrity: sha512-0pmNQRKahGbezgUV2m02l7j4t0Wdl7KMNNMWGCMe76beA7e1IfTPihtNssqWWw1IjqMDi0axoqLiDPzcdbPuGw==}
     engines: {node: '>=22.0.0'}
 
   '@supabase/phoenix@0.4.5':
     resolution: {integrity: sha512-aAn9H9ovVyeApKy11OWOrrOGq8DV68yWeH4ud2lN9fzn4aO8Zb5GLL9m1pUg9nLqIcT+ZDfAcsZe0E/nqdv2lw==}
 
-  '@supabase/postgrest-js@2.119.1':
-    resolution: {integrity: sha512-/Ww9h0QhY6QQ4qsqnPVH3EQtLLPKThYg28wzsY1qOfbBfb55Zz6ZmUoxZFk13Fmxtzp0OBf1dld3wAUeoSnYQA==}
+  '@supabase/postgrest-js@2.119.2':
+    resolution: {integrity: sha512-Q5RIy5wD79jArQSID06JXqS9F+bKLcTr81Yz7hwk2qkMX4fWMru4HLvG3UvoY0FlQzjcjXqVba7+6GeaItq6UQ==}
     engines: {node: '>=22.0.0'}
 
-  '@supabase/realtime-js@2.119.1':
-    resolution: {integrity: sha512-xw8eV7dLlL9qO7EKFt5JyAyyjpZF+azqF6LvaKqbvZD5lnoywZmURah9THDSxiztyn+bmbaPJXWToGdYK6x1pg==}
+  '@supabase/realtime-js@2.119.2':
+    resolution: {integrity: sha512-1xHRbZ8RgKq8Qn50uNJMnBdkuzK35GQTo1hx2+bC3QvCxbzXnFkbmq2ZyT9xSjOCuLBfD5ve3ZKxJcbWefL3ow==}
     engines: {node: '>=22.0.0'}
 
-  '@supabase/storage-js@2.119.1':
-    resolution: {integrity: sha512-LD/dTcm2txvplWBTD4wZbPcZqUSze+MDAk6JKy2onMTTU0puTANQY0NdwFACII0//PzcaC4BCjbb8+MOm1ZqMg==}
+  '@supabase/storage-js@2.119.2':
+    resolution: {integrity: sha512-dbzPuYKYc3/HGz+cRXAK45zR5FWMEH6lr2Is13ZOExhOBCM3F0iO96Z9VuhlLA64vPLeSQP24O/jesWg1QY6fw==}
     engines: {node: '>=22.0.0'}
 
-  '@supabase/supabase-js@2.119.1':
-    resolution: {integrity: sha512-uypIljL8NVQ6de+Z2F2qPW5HW2Isavh/NmpuqUo8AKpoj1NvbNZTy5sMeA0NWy/kXxcpwq94abKOvQnbjSkR0w==}
+  '@supabase/supabase-js@2.119.2':
+    resolution: {integrity: sha512-4HvF4G2DwdqjmwPBpz9RHnXWfdK0wSkw4yBhxe64CdeF8gdxsTF9WZuHFuNWtQnHllq71ZDyAghr4Q8nC0m/NA==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       '@opentelemetry/api': '>=1.0.0'
@@ -2490,7 +2490,7 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@livekit/agents@1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)':
+  '@livekit/agents@1.10.1(@livekit/rtc-node@1.2.3)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)':
     dependencies:
       '@bufbuild/protobuf': 1.10.1
       '@livekit/av': 10.1.0
@@ -2498,7 +2498,7 @@ snapshots:
       '@livekit/local-inference': 0.3.1
       '@livekit/mutex': 1.1.1
       '@livekit/protocol': 1.54.0
-      '@livekit/rtc-node': 1.2.2
+      '@livekit/rtc-node': 1.2.3
       '@livekit/throws-transformer': 0.1.8(typescript@6.0.3)
       '@livekit/typed-emitter': 3.0.0
       '@opentelemetry/api': 1.10.0
@@ -2640,10 +2640,10 @@ snapshots:
   '@livekit/plugins-ai-coustics-x86_64-unknown-linux-gnu@0.3.6':
     optional: true
 
-  '@livekit/plugins-ai-coustics@0.3.6(@livekit/agents@1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.2)':
+  '@livekit/plugins-ai-coustics@0.3.6(@livekit/agents@1.10.1(@livekit/rtc-node@1.2.3)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7))(@livekit/rtc-node@1.2.3)':
     dependencies:
-      '@livekit/agents': 1.10.0(@livekit/rtc-node@1.2.2)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)
-      '@livekit/rtc-node': 1.2.2
+      '@livekit/agents': 1.10.1(@livekit/rtc-node@1.2.3)(@types/node@26.6.6)(typescript@6.0.3)(zod@4.6.7)
+      '@livekit/rtc-node': 1.2.3
       '@ubjs/core': 0.31.0-5
       '@ubjs/node': 0.31.0-5
       pino: 9.13.1
@@ -2663,36 +2663,36 @@ snapshots:
     dependencies:
       '@bufbuild/protobuf': 1.10.1
 
-  '@livekit/rtc-ffi-bindings-darwin-arm64@0.13.2':
+  '@livekit/rtc-ffi-bindings-darwin-arm64@0.15.0':
     optional: true
 
-  '@livekit/rtc-ffi-bindings-darwin-x64@0.13.2':
+  '@livekit/rtc-ffi-bindings-darwin-x64@0.15.0':
     optional: true
 
-  '@livekit/rtc-ffi-bindings-linux-arm64-gnu@0.13.2':
+  '@livekit/rtc-ffi-bindings-linux-arm64-gnu@0.15.0':
     optional: true
 
-  '@livekit/rtc-ffi-bindings-linux-x64-gnu@0.13.2':
+  '@livekit/rtc-ffi-bindings-linux-x64-gnu@0.15.0':
     optional: true
 
-  '@livekit/rtc-ffi-bindings-win32-x64-msvc@0.13.2':
+  '@livekit/rtc-ffi-bindings-win32-x64-msvc@0.15.0':
     optional: true
 
-  '@livekit/rtc-ffi-bindings@0.13.2':
+  '@livekit/rtc-ffi-bindings@0.15.0':
     dependencies:
       '@bufbuild/protobuf': 1.10.1
     optionalDependencies:
-      '@livekit/rtc-ffi-bindings-darwin-arm64': 0.13.2
-      '@livekit/rtc-ffi-bindings-darwin-x64': 0.13.2
-      '@livekit/rtc-ffi-bindings-linux-arm64-gnu': 0.13.2
-      '@livekit/rtc-ffi-bindings-linux-x64-gnu': 0.13.2
-      '@livekit/rtc-ffi-bindings-win32-x64-msvc': 0.13.2
+      '@livekit/rtc-ffi-bindings-darwin-arm64': 0.15.0
+      '@livekit/rtc-ffi-bindings-darwin-x64': 0.15.0
+      '@livekit/rtc-ffi-bindings-linux-arm64-gnu': 0.15.0
+      '@livekit/rtc-ffi-bindings-linux-x64-gnu': 0.15.0
+      '@livekit/rtc-ffi-bindings-win32-x64-msvc': 0.15.0
 
-  '@livekit/rtc-node@1.2.2':
+  '@livekit/rtc-node@1.2.3':
     dependencies:
       '@datastructures-js/deque': 1.0.8
       '@livekit/mutex': 1.1.1
-      '@livekit/rtc-ffi-bindings': 0.13.2
+      '@livekit/rtc-ffi-bindings': 0.15.0
       '@livekit/typed-emitter': 3.0.0
       pino: 9.14.0
       pino-pretty: 13.2.0
@@ -2922,37 +2922,37 @@ snapshots:
 
   '@rolldown/pluginutils@1.1.0': {}
 
-  '@supabase/auth-js@2.119.1':
+  '@supabase/auth-js@2.119.2':
     dependencies:
       tslib: 2.8.1
 
-  '@supabase/functions-js@2.119.1':
+  '@supabase/functions-js@2.119.2':
     dependencies:
       tslib: 2.8.1
 
   '@supabase/phoenix@0.4.5': {}
 
-  '@supabase/postgrest-js@2.119.1':
+  '@supabase/postgrest-js@2.119.2':
     dependencies:
       tslib: 2.8.1
 
-  '@supabase/realtime-js@2.119.1':
+  '@supabase/realtime-js@2.119.2':
     dependencies:
       '@supabase/phoenix': 0.4.5
       tslib: 2.8.1
 
-  '@supabase/storage-js@2.119.1':
+  '@supabase/storage-js@2.119.2':
     dependencies:
       iceberg-js: 0.8.1
       tslib: 2.8.1
 
-  '@supabase/supabase-js@2.119.1(@opentelemetry/api@1.10.0)':
+  '@supabase/supabase-js@2.119.2(@opentelemetry/api@1.10.0)':
     dependencies:
-      '@supabase/auth-js': 2.119.1
-      '@supabase/functions-js': 2.119.1
-      '@supabase/postgrest-js': 2.119.1
-      '@supabase/realtime-js': 2.119.1
-      '@supabase/storage-js': 2.119.1
+      '@supabase/auth-js': 2.119.2
+      '@supabase/functions-js': 2.119.2
+      '@supabase/postgrest-js': 2.119.2
+      '@supabase/realtime-js': 2.119.2
+      '@supabase/storage-js': 2.119.2
     optionalDependencies:
       '@opentelemetry/api': 1.10.0
 
