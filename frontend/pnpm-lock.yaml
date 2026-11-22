@@ -222,7 +222,7 @@ importers:
         version: 1.3.0(@types/react@19.3.0)(react@19.3.1)
       '@rive-app/react-webgl2':
         specifier: ^4.40.0
-        version: 4.40.0(react@19.3.1)
+        version: 4.41.0(react@19.3.1)
       '@streamdown/code':
         specifier: ^2.0.1
         version: 2.0.1(react@19.3.1)
@@ -237,7 +237,7 @@ importers:
         version: 13.0.2(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       ai:
         specifier: ^7.0.178
-        version: 7.0.178(zod@4.6.7)
+        version: 7.0.179(zod@4.6.7)
       buffer-image-size:
         specifier: ^0.6.4
         version: 0.6.4
@@ -359,8 +359,8 @@ importers:
 
 packages:
 
-  '@ai-sdk/gateway@4.0.151':
-    resolution: {integrity: sha512-ZI3oX80/eWr09ZX3UtfWhNR5JgaDkMjbO3okus7hUXNtKezNwwgxqYSFLm/f7eWbUQrflg0HquyVDEcAyTzfUA==}
+  '@ai-sdk/gateway@4.0.152':
+    resolution: {integrity: sha512-8LYMe0uMPbT3XW/Urhca52TSgHXAlQok74EUkWL3qXWJI7naTxJGSF6B7hvIHur+V6ttSyLLZN0rJk+Qu9psqA==}
     engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -1526,13 +1526,13 @@ packages:
   '@radix-ui/rect@1.1.3':
     resolution: {integrity: sha512-JtyZR+mqgBibTo8xea3B6ZRmzZiM/YeVBtUkas6zMuXjAlfIFIW2FgqeM9eLyvEaYX66vr6DJMK+4U6LV0KhNw==}
 
-  '@rive-app/react-webgl2@4.40.0':
-    resolution: {integrity: sha512-hsOiNlbHORrAjqsVYLUvQ/F/dA9momWVG3ZLJZ+SsnVr4akstMbz56awvlR60DypA46Xm7YI20rAS7w/SY1XTw==}
+  '@rive-app/react-webgl2@4.41.0':
+    resolution: {integrity: sha512-T3IC50cUqoteMDFAX/XNPIkDHXsaSI2IZkpHAmQk3cmMdFNlratiIuN/pW3qyrQU0uq6Mu7183Npp1yOvR9GEA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0
 
-  '@rive-app/webgl2@2.52.0':
-    resolution: {integrity: sha512-twmkd5gtBJbnWz/EmoRvraulnJlwjrMacQ2qOcdXoltr+0AXx6M6laBBR2i3q0NNCDgwbRgRYXrfMny2P4y9GQ==}
+  '@rive-app/webgl2@2.54.0':
+    resolution: {integrity: sha512-OCA/GGrVRigWiLUJW/DIytfW47aj4QI2ELVtr/d9fZB0bCkTWrds97lsI7e6Xpv3eJ7440sUKmw4rTBl5FLYbA==}
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
@@ -2023,8 +2023,8 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  ai@7.0.178:
-    resolution: {integrity: sha512-Sfp6z041qKYKj0Fq+aXd4i7zmL4zLAbzzjU7t3QZ1lBFlZE1vaPApJWxuXsUPhbLQjSRYSUYTyE5CuUjJySSYA==}
+  ai@7.0.179:
+    resolution: {integrity: sha512-WT2ad3qEQPLne/5RDE/utNMSKYUuNpnGkI46AO/6Lv+IbEJ3kRwbatLX3HNfk25Y7N8LpdqOcSnMLcdw11VyIQ==}
     engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -4014,7 +4014,7 @@ packages:
 
 snapshots:
 
-  '@ai-sdk/gateway@4.0.151(zod@4.6.7)':
+  '@ai-sdk/gateway@4.0.152(zod@4.6.7)':
     dependencies:
       '@ai-sdk/provider': 4.0.39
       '@ai-sdk/provider-utils': 5.0.83(zod@4.6.7)
@@ -5196,12 +5196,12 @@ snapshots:
 
   '@radix-ui/rect@1.1.3': {}
 
-  '@rive-app/react-webgl2@4.40.0(react@19.3.1)':
+  '@rive-app/react-webgl2@4.41.0(react@19.3.1)':
     dependencies:
-      '@rive-app/webgl2': 2.52.0
+      '@rive-app/webgl2': 2.54.0
       react: 19.3.1
 
-  '@rive-app/webgl2@2.52.0': {}
+  '@rive-app/webgl2@2.54.0': {}
 
   '@rtsao/scc@1.1.0': {}
 
@@ -5655,9 +5655,9 @@ snapshots:
 
   acorn@8.19.0: {}
 
-  ai@7.0.178(zod@4.6.7):
+  ai@7.0.179(zod@4.6.7):
     dependencies:
-      '@ai-sdk/gateway': 4.0.151(zod@4.6.7)
+      '@ai-sdk/gateway': 4.0.152(zod@4.6.7)
       '@ai-sdk/provider': 4.0.39
       '@ai-sdk/provider-utils': 5.0.83(zod@4.6.7)
       zod: 4.6.7
