@@ -147,7 +147,7 @@ pnpm test:agent-ts      # vitest only
 pnpm test:agent-py      # pytest only
 ```
 
-Pull requests that change `supabase/migrations/*.sql` run [RattleCheck](.github/workflows/rattlecheck.yml) against the base and proposed migrations. New high or critical permission findings point to the SQL line to review before `pnpm db:migrate`. The check reads committed files and needs no database credentials.
+Pull requests that change `supabase/migrations/*.sql` run [RattleCheck](.github/workflows/rattlecheck.yml) against the base and proposed migrations. New high or critical permission findings point to the SQL line to review before `pnpm db:migrate`. The workflow pins both the Action commit and the npm scanner version. It reads committed files and needs no database credentials.
 
 ## Script reference
 

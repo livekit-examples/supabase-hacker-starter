@@ -15,4 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: chaseakub/rattlecheck-action/review-pr@1e433760918c46cf6cfef7f544542e4b8f118a8b
+      - uses: chaseakub/rattlecheck-action/review-pr@300994f3bd43c036be6765ded1783706584b4f10
+        with:
+          rattlecheck-version: '0.3.0'
